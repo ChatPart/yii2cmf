@@ -37,7 +37,10 @@
         "bower-asset/blueimp-file-upload" : "*",
         "bower-asset/editor.md": "*",
         "creocoder/yii2-flysystem": "*",
-        "qiniu/php-sdk": "^7.1"
+        "qiniu/php-sdk": "^7.1",
+        "yiisoft/yii2-mongodb": "^2.1",
+        "maxwen/yii2-easy-wechat": "^1.0",
+        "stoneworld/wechat": "^2.2"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "*",

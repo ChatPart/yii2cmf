@@ -21,6 +21,7 @@ class Controller extends \yii\rest\Controller
         'class' => 'yii\rest\Serializer',
         'collectionEnvelope' => 'items'
     ];
+
     public function behaviors()
     {
         $behaviors = parent::behaviors();

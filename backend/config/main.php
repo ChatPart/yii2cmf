@@ -44,6 +44,20 @@ return [
         'backup' => [
             'class' => 'backup\Module',
         ],
+        'team' => [
+            'class' => 'common\modules\team\Module',
+        ],
+        'customer' => [
+            'class' => 'common\modules\customer\Module',
+        ],
+        'gii' => [
+            'class' => 'yii\gii\Module',
+            'generators' => [
+                'mongoDbModel' => [
+                    'class' => 'yii\mongodb\gii\model\Generator'
+                ]
+            ],
+        ],
     ],
     'aliases' => [
         '@rbac' => '@backend/modules/rbac',

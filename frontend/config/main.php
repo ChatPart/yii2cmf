@@ -37,5 +37,13 @@ return [
             'engine' => env('SEARCH_ENGINE', 'local')
         ]
     ],
+    'modules' => [
+        'customer' => [
+            'class' => 'common\modules\customer\Module',
+        ],
+        'team' => [
+            'class' => 'common\modules\team\Module',
+        ],
+    ],
     'params' => $params,
 ];

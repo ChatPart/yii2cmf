@@ -9,7 +9,7 @@
 namespace frontend\controllers;
 
 
-use common\models\Attachment;
+use common\modules\attachment\models\Attachment;
 use yii\web\Controller;
 
 class AttachmentController extends Controller

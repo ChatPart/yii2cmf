@@ -29,6 +29,10 @@ class SiteController extends Controller
         $params = Yii::$app->request->getBodyParams();
         return;
     }
+    public function actionCc()
+    {
+        return 'cc';
+    }
 
     private function checkSignature()
     {
