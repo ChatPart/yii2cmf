@@ -1,0 +1,27 @@
+.index-box{
+    min-height: 285px;
+}
+.bg-font .index-box{
+    min-height: 285px;
+}
+.box-item{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    font-size: 14px;
+}
+.text-muted {
+    color: #a7a7a7;
+}
+.listpic-text{
+    overflow: hidden;
+    width: 100%;
+    /*height: 3em;*/
+}
+.list-pic .attachment-block .attachment-heading {
+    font-size: 17px;
+    height: 22px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

@@ -14,7 +14,6 @@ use yii\helpers\ArrayHelper;
 
 class DynamicFormBehavior extends Behavior
 {
-
     /**
      * ['attribute' => ['type' => 'text', 'items' => [], 'options' => []]
      * @var array
