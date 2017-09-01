@@ -18,11 +18,11 @@ if (Yii::$app->controller->action->id === 'login') {
 } else {
 
 
-    frontend\assets\AppAsset::register($this);
+frontend\themes\riem\assets\AppAsset::register($this);
 
 
     //dmstr\web\AdminLteAsset::register($this);
-    frontend\assets\AdminLteAsset::register($this);
+frontend\themes\riem\assets\AdminLteAsset::register($this);
 
     $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@app/web/lte/dist');
     ?><!DOCTYPE html>

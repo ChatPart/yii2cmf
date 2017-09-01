@@ -2,6 +2,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\Url;
+use common\models\Category;
 
 /* @var $this yii\web\View */
 
@@ -31,44 +32,30 @@ position: relative;
 
 
 <div class="container" style="padding-left: 0px;padding-right: 0px">
-    <div id="carousel-example-generic" data-id="124gh2345" data-edit="t" class="carousel slide" data-ride="carousel" style="margin-top: 12px">
-        <ol class="carousel-indicators">
-            <!--<li data-target="#carousel-example-generic" data-id="1242345" data-edit="text" data-slide-to="0" class="active">
-                hallow fsd
-            </li>
-            <li data-target="#carousel-example-generic" data-id="1242345" data-edit="text" data-slide-to="1" class=""></li>
-            <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>-->
-        </ol>
-        <div class="carousel-inner slider-items">
-            <?php foreach ($pic as $k => $v) {
-                if ($k == 0) {
-                    ?>
-                    <div class="item active">
-                        <a href="<?= $v->url ?>">
-                            <img src="<?= Url::to("@web" . $v->savepath) ?>" alt="<?= $v->content ?>">
-                        </a>
-                    </div>
-                <?php } else { ?>
-                    <div class="item">
-                        <a href="<?= $v->url ?>">
-                            <img src="<?= Url::to("@web" . $v->savepath) ?>" alt="<?= $v->content ?>">
-                        </a>
-                    </div>
-                <?php }
-            } ?>
-
-        </div>
-        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-            <span class="fa fa-angle-left"></span>
-        </a>
-        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-            <span class="fa fa-angle-right"></span>
-        </a>
-    </div>
+    <?= \frontend\widgets\slider\CarouselWidget::widget([
+        'key' => 'cc',
+        'options' => [
+            'class' => 'mb15 home-carousel',
+        ],
+    ]) ?>
 
     <hr style="    border-top:1px solid #D9E0E6;margin-top: 20px;margin-bottom: 20px;">
     <div class="row" style="    margin-bottom: 7px;">
         <div class="col-md-8" style="">
+            <?= common\widgets\box\BoxWidget::widget([
+                'category' => Category::findOne(['slug' => 'news']),
+                'type' => 'listPic_m',
+                //'cate' => 14,
+                'sort' => [
+                    'created_at' => SORT_DESC,
+                ],
+                'liNum' => 4,
+                //'pic' => true,
+                //'title' => ,
+                'url' => Url::toRoute(['document/list', 'cate' => 14]),
+                'css' => ['warper' => 'box-widget index-box ', 'header' => 'with-border index-box-header', 'title' => 'index-box-title', 'icon' => 'index-box-icon bicon-news', 'body' => 'box-profile blue-border',],
+            ]) ?>
+
             <?= common\widgets\box\BoxWidget::widget([
                 'model'=>\common\models\Document::className(),
                 //'config' => ['cate'=>14],
