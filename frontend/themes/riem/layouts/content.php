@@ -33,7 +33,7 @@ use common\models\Cate;
     <?php } ?>
 
     <section class="content ">
-        <?= Alert::widget() ?>
+
         <?= $content ?>
     </section>
 
@@ -58,24 +58,12 @@ use common\models\Cate;
                             <h5>相关链接</h5>
                             <div class="col-sm-6">
                                 <ul class="social-links circle">
-                                <?php
-                                $link_bottom = Cate::findAll(['status'=>Cate::$STATUS_AOLLOW,'pre_cate'=>46]);
-                                for($i=0; $i<count($link_bottom); $i+=2){ ?>
-                                    <li class="">
-                                        <a href="<?= $link_bottom[$i]->uri?>"><?= $link_bottom[$i]->name?></a>
-                                    </li>
-                                <?php } ?>
+
                                 </ul>
                             </div>
                             <div class="col-sm-6">
                                 <ul class="social-links circle">
-                                    <?php
-                                    $link_bottom = Cate::findAll(['status'=>Cate::$STATUS_AOLLOW,'pre_cate'=>46]);
-                                    for($i=1; $i<count($link_bottom); $i+=2){ ?>
-                                        <li class="">
-                                            <a href=<?= $link_bottom[$i]->uri?>><?= $link_bottom[$i]->name?> </a>
-                                        </li>
-                                    <?php } ?>
+
                                 </ul>
                             </div>
                         </div>

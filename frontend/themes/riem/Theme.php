@@ -21,7 +21,7 @@ class Theme extends \frontend\themes\Theme
         'keywords' => '白色 adminLTE'
     ];
 
-    public function bootstrap()
+    /*public function bootstrap()
     {
         Yii::$container->set('yii\bootstrap\BootstrapAsset', [
             //'sourcePath' => '@frontend/themes/osec/static',
@@ -30,5 +30,5 @@ class Theme extends \frontend\themes\Theme
                 YII_ENV_DEV ? 'css/bootstrap.css' : 'css/bootstrap.min.css',
             ]
         ]);
-    }
+    }*/
 }

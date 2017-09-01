@@ -11,8 +11,8 @@ use yii\web\AssetBundle as BaseAdminLteAsset;
 class AdminLteAsset extends BaseAdminLteAsset
 {
     //public $sourcePath = '@app/web/adminlte/dist';
-    public $basePath = '@webroot/lte/dist';
-    public $baseUrl = '@web/lte/dist';
+    public $basePath = '@webroot/riem/lte/dist';
+    public $baseUrl = '@web/riem/lte/dist';
     public $css = [
         'css/AdminLTE.css',
         'css/self.css',
@@ -21,10 +21,12 @@ class AdminLteAsset extends BaseAdminLteAsset
         'js/app.min.js'
     ];
     public $depends = [
-        'rmrevin\yii\fontawesome\AssetBundle',
-        'yii\web\YiiAsset',
+        //'rmrevin\yii\fontawesome\AssetBundle',
+        /*'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
-        'yii\bootstrap\BootstrapPluginAsset',
+        'yii\bootstrap\BootstrapPluginAsset',*/
+        'common\assets\FontAwesomeAsset',
+        'common\assets\ModalAsset',
     ];
 
     /**

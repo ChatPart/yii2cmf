@@ -30,8 +30,11 @@ use backend\widgets\category\CategoryWidget;
                     ];
                 }else{*/
 
-                $menu = new CategoryWidget(['precate_name' => 'document']);
-                $menuItemsCenter = $menu->getCate();  //获取树状栏目
+               /* $menu = new CategoryWidget(['precate_name' => 'document']);
+                $menuItemsCenter = $menu->getCate();  //获取树状栏目*/
+
+                $menuItemsCenter = \common\models\Nav::getTreeItems('header');
+
                 //$menuItemsCenter = \mdm\admin\components\MenuHelper::getAssignedMenu(Yii::$app->user->id,$menuItemsCenter);
                 //var_dump($menuItemsCenter);die();
                 echo Nav::widget([

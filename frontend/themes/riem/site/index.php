@@ -56,7 +56,7 @@ position: relative;
                 'css' => ['warper' => 'box-widget index-box ', 'header' => 'with-border index-box-header', 'title' => 'index-box-title', 'icon' => 'index-box-icon bicon-news', 'body' => 'box-profile blue-border',],
             ]) ?>
 
-            <?= common\widgets\box\BoxWidget::widget([
+            <?/*= common\widgets\box\BoxWidget::widget([
                 'model'=>\common\models\Document::className(),
                 //'config' => ['cate'=>14],
                 'where' => ['or','cate=96','cate=14'],
@@ -72,16 +72,16 @@ position: relative;
                 'url' => Url::toRoute(['document/list', 'cate' => 14]),
                 'liNum' => 4,
                 'css' => ['warper' => 'box-widget index-box ', 'header' => 'with-border index-box-header', 'title' => 'index-box-title', 'icon' => 'index-box-icon bicon-news', 'body' => 'box-profile blue-border',],
-            ]) ?>
+            ]) */?>
 
         </div>
         <div class="col-md-4 wbox" style="height: 446px;">
-            <?= common\widgets\box\BoxWidget::widget([
+            <?/*= common\widgets\box\BoxWidget::widget([
                 'type' => 'index-frame', 'cate' => 32, 'title' =>  'Notices', 'liNum' => 6,
                 //'type' => 'index-frame', 'cate' => 32, 'title' => Yii::t('common', 'Notices'), 'liNum' => 6,
                 'url' => Url::toRoute(['document/list', 'cate' => 32]),
                 'css' => ['warper' => 'box-widget index-box blue-border', 'title' => 'index-box-title', 'header' => 'with-border index-box-header', 'icon' => 'index-box-icon bicon-laba', 'body' => 'box-profile',]])
-            ?>
+            */?>
         </div>
     </div>
     <div class="row" style="margin-bottom: 23px">
@@ -95,7 +95,7 @@ position: relative;
     <div class="row" style="margin-bottom: 25px;">
         <div class="col-md-8" style="    height: 506px;">
             <?php
-            $achieve = new \frontend\models\Achievement();
+            /*$achieve = new \frontend\models\Achievement();
 
             echo common\widgets\box\BoxWidget::widget([
                 'model' => $achieve,
@@ -106,11 +106,11 @@ position: relative;
                 'sort' => ['id' => SORT_DESC],
                 'css' => ['warper' => 'box-widget index-box blue-border', 'title' => 'index-box-title', 'header' => 'with-border index-box-header', 'icon' => 'index-box-icon bicon-bookmark', 'body' => 'box-profile',]
                 ]
-            );
+            );*/
             ?>
         </div>
         <div class="col-md-4 wbox" style="height: 506px;">
-            <?= common\widgets\box\BoxWidget::widget([
+            <?/*= common\widgets\box\BoxWidget::widget([
                 'model'=>\common\models\Document::className(),
                 //'config' => ['cate'=>14],
                 'where' => ['or','cate=93','cate=94','cate=95'],
@@ -127,7 +127,7 @@ position: relative;
                 'url' => Url::toRoute(['document/max-list', 'cate' => 94]),
                 'liNum' => 4,
                 'css' => ['warper' => 'box-widget index-box blue-border', 'title' => 'index-box-title', 'header' => 'with-border index-box-header', 'icon' => 'index-box-icon bicon-laba', 'body' => 'box-profile',]
-            ]) ?>
+            ]) */?>
 
         </div>
     </div>
