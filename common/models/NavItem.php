@@ -30,7 +30,7 @@ class NavItem extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'url'], 'required'],
-            [['status', 'nav_id', 'order', 'target'], 'integer'],
+            [['status', 'nav_id', 'order', 'target','pid'], 'integer'],
             [['title', 'url'], 'string', 'max' => 128],
         ];
     }

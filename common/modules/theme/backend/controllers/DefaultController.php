@@ -25,7 +25,7 @@ class DefaultController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'open' => ['post'],
+                    //'open' => ['post'],
                 ],
             ],
         ];

@@ -68,4 +68,49 @@ class Nav extends \yii\db\ActiveRecord
         }, $items);
     }
 
+    public static function getTreeItems($key)
+    {
+        $nav = self::find()->where(['key' => $key])->one();
+        if ($nav == null) {
+            return [];
+        }
+        $items = NavItem::find()->select('id,title label, url, target')
+            ->where(['nav_id' => $nav->id, 'status' => 1,'pid'=>0])
+            ->orderBy(['order' => SORT_ASC])
+            ->asArray()->all();
+
+        foreach($items as $k=>$v){
+            $subItems = NavItem::find()->select('title label, url, target')
+                ->where(['nav_id' => $nav->id,'pid'=>$v['id'], 'status' => 1])
+                ->orderBy(['order' => SORT_ASC])
+                ->asArray()->all();
+            //echo $v['id'];
+            /*var_dump($subItems);
+            echo '<br>';
+            echo '<br>';*/
+
+            //if(!empty($subItems)){
+            array_map(function($value){
+                $value['url'] = Util::parseUrl($value['url']);
+                if ($value['target'] == 1) {
+                    $value['linkOptions'] = ['target' => '_blank'];
+                }
+                return $value;
+            }, $subItems);
+
+            $items[$k]['items']=$subItems;
+            //}
+        }
+
+//die();
+        return array_map(function($value){
+            $value['url'] = Util::parseUrl($value['url']);
+            if ($value['target'] == 1) {
+                $value['linkOptions'] = ['target' => '_blank'];
+            }
+
+            return $value;
+        }, $items);
+    }
+
 }

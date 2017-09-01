@@ -12,10 +12,14 @@ return [
             'identityClass' => 'api\common\models\User',
         ],
         'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'enableStrictParsing' => true,
+//            'enablePrettyUrl' => true,
+//            'showScriptName' => false,
+//            'enableStrictParsing' => true,
             //'enableStrictParsing' =>true,
+            'enablePrettyUrl' => true,
+            'enableStrictParsing' => false,
+            'showScriptName' => false,
+
             'rules' => [
                 [
                     'class' => 'yii\rest\UrlRule',
@@ -24,23 +28,54 @@ return [
                         'v1/nav',
                         'v1/user',
                         'v1/comment',
+                        'v1/max',
                         'v2/task-list',
                         'v2/task',
                         'v2/board',
                         'v2/detail-list',
-                    ]
+                    ],
+                    /*'extraPatterns' => [
+                        'GET search' => 'search',
+                    ],*/
                 ],
-                /*[
+
+                [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => [
                         'v2/task-list',
-                    ]
-                ],*/
+                        'v2/task',
+                        'v2/board',
+                        'v2/detail-list',],
+                    'extraPatterns' => [
+                        'GET view' => 'view',
+                    ],
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => [
+                        'v2/task-list',
+                        'v2/task',
+                        'v2/board',
+                        //'v2/detail-list',
+                        ],
+                    'tokens' => [
+                        '{id}' => '<id:\\w+>'
+                    ],
+                    /*'extraPatterns' => [
+                        'PUT,PATCH {id}' => 'update',
+                    ],*/
+                    /*  'except' => ['delete', 'create', 'update'],
+                     'extraPatterns' => [
+                         'GET test' => 'test',
+                     ], */
+                ],
+                //'<controller:\w+>/update/<id:\w+>' => '<controller>/update',
+                //'<controller:\w+>/<action:\w+>/<id:\w+>' => '<controller>/<action>'
+                /*'<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',*/
             ],
         ],
-        /*'request' => [
-            'enableCookieValidation' => false
-        ],*/
+
         'request' => [
             'enableCookieValidation' => false,
             'parsers' => [

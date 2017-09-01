@@ -14,6 +14,7 @@ use yii\helpers\Html;
             <?= $form->field($model, 'title') ?>
 
             <?= $form->field($model, 'url')->textarea(['maxlength' => 1024]) ?>
+    <?php echo $form->field($model, 'pid')->Input(['type'=>'number']) ?>
 
             <?= $form->field($model, 'target')->checkbox() ?>
 

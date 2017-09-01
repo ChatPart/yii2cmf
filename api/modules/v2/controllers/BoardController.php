@@ -2,7 +2,10 @@
 
 namespace api\modules\v2\controllers;
 
+use common\modules\team\models\Board;
+use common\modules\team\models\Task;
 use common\modules\team\models\TaskList;
+use yii\data\ArrayDataProvider;
 use yii\rest\ActiveController;
 //use api\common\controllers\Controller;
 use yii\data\ActiveDataProvider;
@@ -24,29 +27,15 @@ class BoardController extends ActiveController
             'checkAccess' => [$this, 'checkAccess'],
         ];
 
-        $actions['delete']=[
+        /*$actions['delete']=[
             'class' => 'api\common\behaviors\DeleteAction',
             'modelClass' => $this->modelClass,
             'checkAccess' => [$this, 'checkAccess'],
-        ];
+        ];*/
         //unset($actions['index']);
         return $actions;
     }
 
-    public function actionCreate(){
-        $post = \Yii::$app->getRequest()->getBodyParams();
-
-
-        $model = $this->modelClass::findOne(json_decode($post));
-
-        //$model = $modelClass::findOne(array_combine($keys, $values));
-
-        /*if ($this->checkAccess) {
-            call_user_func($this->checkAccess, $this->id, $model);
-        }*/
-
-        return $model;
-    }
 
     public function actionIndex($query = null)
     {
@@ -68,6 +57,59 @@ class BoardController extends ActiveController
             ]
         ]);
 
+        return $dataProvider;
+    }
+    public function actionBoardother($board_id)
+    {
+        /*$command = json_decode($query,true);
+        if($command == null){
+            $command =[];
+        }*/
+
+        //$board = Board::findOne($board_id);
+            //->andFilterWhere($command);
+
+        $task_listQuery = TaskList::find()
+            ->andFilterWhere(['board_id'=>$board_id]);
+
+        /*$task_lists = new ActiveDataProvider([
+            'query' => $task_listQuery,
+            'sort' => [
+                'defaultOrder' => [
+                    'created_at' => SORT_ASC
+                ]
+            ]
+        ]);*/
+        $task_lists = TaskList::find()->where(['board_id'=>$board_id])->all();
+
+        //$tasks = [];
+
+        foreach ($task_lists as $taskList){
+            $task_lists['task'] = Task::find()->where(['task_list_id'=>$taskList->id])->all();
+        }
+
+        $provider = new ArrayDataProvider([
+            'allModels' => $task_lists,
+            'pagination' => [
+                'pageSize' => 10,
+            ],
+            'sort' => [
+                'attributes' => ['created_at'],
+            ],
+        ]);
+        //var_dump($provider);
+        $myQuery = $this->modelClass::find()
+            ->andFilterWhere(['board_id'=>$board_id]);
+
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $myQuery,
+            'sort' => [
+                'defaultOrder' => [
+                    '_id' => SORT_DESC
+                ]
+            ]
+        ]);
         return $dataProvider;
     }
 
