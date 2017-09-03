@@ -40,10 +40,11 @@ class Student extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['created_at', 'grade', 'due'], 'safe'],
+            [['id'], 'required'],
+            [['created_at', 'grade', 'due', 'icon'], 'safe'],
             [['status'], 'integer'],
-            [['info', 'icon', 'achievement'], 'string'],
-            [['student_id', 'name', 'email', 'job', 'degree'], 'string', 'max' => 255],
+            [['info', 'achievement'], 'string'],
+            [['student_id', 'name', 'email', 'job', 'degree', 'tagMajors'], 'string', 'max' => 255],
             [['major'], 'string', 'max' => 100],
         ];
     }
@@ -55,7 +56,7 @@ class Student extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'student_id' => 'Student ID',
+            'student_id' => '学号',
             'name' => '姓名',
             'email' => '邮箱',
             'created_at' => 'Created At',
@@ -68,6 +69,7 @@ class Student extends \yii\db\ActiveRecord
             'achievement' => '学术成果',
             'major' => '专业',
             'due' => '届',
+            'tagMajors' => '研究方向'
         ];
     }
 
@@ -87,6 +89,8 @@ class Student extends \yii\db\ActiveRecord
                     ],
                     'name' => 'text',
                     'email' => 'text',
+                    'grade' => 'text',
+                    'student_id' => 'text',
                     'job' => 'text',
                     'degree' => 'text',
                     'achievement' => 'text',
@@ -95,7 +99,8 @@ class Student extends \yii\db\ActiveRecord
                     '头像' => [
                         'type' => 'images',
                         'option' => ['widgetOptions' => ['onlyUrl' => false]]
-                    ]
+                    ],
+                    'tagMajors' => 'text'
                 ]
             ]
         ];
