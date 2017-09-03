@@ -34,7 +34,7 @@ use yii\helpers\Url;
                 <div class="attachment-pushed">
                     <h4 class="attachment-heading listpic-text" style="font-size: 17px; height: 22px;white-space: nowrap;
 text-overflow: ellipsis;">
-                        <a href="<?= Url::to(['/' . $model->tableName() . '/view/', 'id' => $m->id]) ?>"><?= $m->title ?></a>
+                        <a href="<?= Url::to(['/article/view', 'id' => $m->id]) ?>"><?= $m->title ?></a>
                     </h4>
 
                     <div class="attachment-text listpic-text" style="height: 43px;">
