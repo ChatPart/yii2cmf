@@ -4,8 +4,9 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\Student */
+/* @var $model common\models\article\Student */
 
+$model = $model->data;
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('jiaowu', '在读博士'), 'url' => ['/student/list']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -27,7 +28,7 @@ $this->registerCssFile('@web/plugins/student/css/style.css',['depends'=>['yii\bo
                             <li>
                                 <ul class="address-text">
                                     <li><b>学位</b></li>
-                                    <li><?= $model->major?> 博士</li>
+                                    <li><?= $model->major?></li>
                                 </ul>
                             </li>
                             <li>
@@ -39,8 +40,8 @@ $this->registerCssFile('@web/plugins/student/css/style.css',['depends'=>['yii\bo
                             <li>
                                 <ul class="address-text">
                                     <li><b>研究方向 </b></li>
-                                    <li><?php foreach ($model->tagMajors as $tag) { ?>
-                                            <span class="label  btn-info"><?= $tag->tag ?></span>
+                                    <li><?php foreach (preg_split('/;/', $model->tagMajors) as $tag) { ?>
+                                            <span class="label  btn-info"><?= $tag ?></span>
                                         <?php } ?></li>
                                 </ul>
                             </li>
