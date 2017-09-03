@@ -79,7 +79,9 @@ class Student extends \yii\db\ActiveRecord
         return [
             [
                 'class' => UploadBehavior::className(),
-                'attribute' => '头像'
+                'attribute' => 'icon',
+                'multiple' => true,
+                'entity' => __CLASS__
             ],
             [
                 'class' => DynamicFormBehavior::className(),
@@ -96,7 +98,7 @@ class Student extends \yii\db\ActiveRecord
                     'achievement' => 'text',
                     'major' => 'text',
                     'due' => 'text',
-                    '头像' => [
+                    'icon' => [
                         'type' => 'images',
                         'option' => ['widgetOptions' => ['onlyUrl' => false]]
                     ],
