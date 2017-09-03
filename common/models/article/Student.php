@@ -41,11 +41,12 @@ class Student extends \yii\db\ActiveRecord
     {
         return [
             [['id'], 'required'],
-            [['created_at', 'grade', 'due', 'icon'], 'safe'],
+            [['created_at', 'grade', 'due'], 'safe'],
             [['status'], 'integer'],
             [['info', 'achievement'], 'string'],
             [['student_id', 'name', 'email', 'job', 'degree', 'tagMajors'], 'string', 'max' => 255],
             [['major'], 'string', 'max' => 100],
+            ['student_icon', 'safe']
         ];
     }
 
@@ -62,7 +63,7 @@ class Student extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'status' => 'Status',
             'info' => '简介',
-            'icon' => '头像',
+            'student_icon' => '头像',
             'grade' => '年级',
             'job' => '去向',
             'degree' => '学位',
@@ -79,8 +80,8 @@ class Student extends \yii\db\ActiveRecord
         return [
             [
                 'class' => UploadBehavior::className(),
-                'attribute' => 'icon',
-                'multiple' => true,
+                'attribute' => 'student_icon',
+                'multiple' => false,
                 'entity' => __CLASS__
             ],
             [
@@ -98,9 +99,9 @@ class Student extends \yii\db\ActiveRecord
                     'achievement' => 'text',
                     'major' => 'text',
                     'due' => 'text',
-                    'icon' => [
-                        'type' => 'images',
-                        'option' => ['widgetOptions' => ['onlyUrl' => false]]
+                    'student_icon' => [
+                        'type' => 'image',
+                        'options' => ['widgetOptions' => ['onlyUrl' => false]]
                     ],
                     'tagMajors' => 'text'
                 ]

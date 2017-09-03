@@ -50,7 +50,7 @@ $this->registerCssFile('@web/plugins/student/css/style.css',['depends'=>['yii\bo
                     </div>
                     <div class="col-md-5 header-left">
                         <div style="overflow: hidden;max-height: 263px;">
-                            <img src="<?= $model->icon?>" alt="">
+                            <img src="<?= $model->student_icon?>" alt="">
                         </div>
 
                     </div>
