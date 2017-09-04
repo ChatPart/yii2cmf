@@ -137,7 +137,7 @@ $this->registerJs($js);
                         <div class="separator-2"></div>
                         <div class="row">
                             <?= common\widgets\box\BoxWidget::widget([
-                                'category' => Category::findOne(['slug' => 'news']),
+                                'category' => Category::findOne(['slug' => 'macro_news']),
                                 'type' => 'blogpost',
                                 //'cate' => 14,
                                 'sort' => [
