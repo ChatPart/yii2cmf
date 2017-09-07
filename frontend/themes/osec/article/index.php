@@ -1,4 +1,5 @@
 <?php
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $models array */
@@ -21,13 +22,28 @@ if (isset($category)) {
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
-                <?= \yii\widgets\ListView::widget([
-                    'dataProvider' => $dataProvider,
-                    'itemView' => '_item',
-                    'layout' => "{items}",
-                    'options' => ['class' => 'article-list'],
-                    'itemOptions' => ['class' => 'media']
-                ]) ?>
+                <?php foreach ($dataProvider->getModels() as $m): ?>
+                    <article class="clearfix blogpost object-non-visible" data-animation-effect="fadeInUpSmall"
+                             data-effect-delay="200">
+                        <div class="blogpost-body">
+                            <div class="post-info">
+                                <span class="day"><?=Yii::$app->formatter->asDate($m->created_at,'dd')?></span>
+                                <span class="month"><?=Yii::$app->formatter->asDate($m->created_at,'M月 Y')?></span>
+                            </div>
+                            <div class="blogpost-content">
+                                <header>
+                                    <h3 class="title">
+                                        <a href="<?= Url::to(['/article/view', 'id' => $m->id]) ?>"><?= $m->title ?></a>
+                                    </h3>
+                                    <!-- <div class="submitted"><i class="fa fa-user pr-5"></i> by <a href="#">John Doe</a></div>-->
+                                </header>
+                                <p><?= $m->description ?></p>
+                            </div>
+                        </div>
+                    </article>
+
+                <?php endforeach; ?>
+
                 <?php if (!(new \Detection\MobileDetect())->isMobile()): ?>
                     <?= \yii\widgets\LinkPager::widget([
                         'pagination' => $dataProvider->pagination
@@ -51,20 +67,20 @@ if (isset($category)) {
                     "headerClass" => "panel-heading",
                     "bodyClass" => "panel-body",
                 ]) ?>
-                <div class="panel panel-success">
-                    <div class="panel-heading">
-                        <h5>热门标签</h5>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="tag-list list-inline">
-                            <?php foreach ($hotTags as $tag): ?>
-                                <li><a class="label label-<?= $tag->level ?>"
-                                       href="<?= \yii\helpers\Url::to(['article/tag', 'name' => $tag->name]) ?>"><?= $tag->name ?></a>
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
+                <div class="block clearfix">
+
+                    <div class="tags-cloud">
+                        <?php foreach($hotTags as $tag): ?>
+                            <div class="tag">
+                                <a class="label label-<?= $tag->level ?>" href="<?= Url::to(['article/tag', 'name' => $tag->name])?>">
+                                    <?= $tag->name ?>
+                                </a>
+                            </div>
+                        <?php endforeach; ?>
+
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

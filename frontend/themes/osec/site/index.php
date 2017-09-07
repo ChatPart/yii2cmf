@@ -8,6 +8,9 @@ use common\models\Category;
 
 $this->title = '经济与管理研究院';//Yii::t('common', 'School of International Education');
 $this->params['index'] = true;//$this->title;
+$this->params['no_banner'] = true;
+$this->params['no_breadcrumb'] = true;
+
 $this->params['breadcrumbs'] = null;//$this->title;
 $this->blocks['content-header'] = '';
 
@@ -68,7 +71,7 @@ $this->registerJs($js);
     <div id="main" role="main">
         <section class="slider">
             <?= \frontend\widgets\slider\CarouselWidget::widget([
-                'key' => 'cc',
+                'key' => 'osec',
                 'options' => [
                     'class' => 'mb15 home-carousel',
                 ],
@@ -133,7 +136,9 @@ $this->registerJs($js);
 
                     <div class="col-md-8">
                         <!--<h1 class="title text-center">通知公告</h1>-->
-                        <h1 class="page-title">通知公告</h1>
+                        <h1 class="page-title">
+                            <a href="<?= Url::to('article/index',['cate'=>'macro_news']) ?>">通知公告</a>
+                        </h1>
                         <div class="separator-2"></div>
                         <div class="row">
                             <?= common\widgets\box\BoxWidget::widget([
@@ -154,185 +159,31 @@ $this->registerJs($js);
                     </div>
                     <div class="col-md-4">
                         <!--<h2 class="title">留学项目</h2>-->
-                        <h2 class="page-title text-center">留学项目</h2>
+                        <h2 class="page-title text-center">
+                            <a href="<?= Url::to('article/index',['cate'=>'school']) ?>">
+                            留学项目</a>
+                        </h2>
                         <div class="separator"></div>
-                        <div class="panel-group panel-dark" id="accordion">
+                        <div class="university-list panel-group panel-dark" id="accordion">
+                            <?php $schools = \frontend\models\Article::findAll(['module'=>'university']);
+                                foreach ($schools as $school){ ?>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                            <i class="fa fa-bold"></i>英国伯明翰大学2+2本科项目
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?= $school->id ?>" class="collapsed">
+                                            <img style="width: 50px;max-height: 50px;display: inline;background: #fff;" src="<?= @$school->data->school_logo[0] ?>" />
+                                            <span style="padding-left: 18px"></span><?= $school->title ?>
                                         </a>
                                     </h4>
                                 </div>
-                                <div id="collapseOne" class="panel-collapse collapse in">
+                                <div id="collapse<?= $school->id ?>" class="panel-collapse collapse ">
                                     <div class="panel-body">
-                                        伯明翰大学(University of
-                                        Birmingham)位于英格兰中部的第二大城市伯明翰，位列英国历史上著名的红砖大学之首，在全球大学排名100名之内，是英国最好、校园规模最大的老牌名校，是英国十所杰出研究型大学和六个科研最成功的大学之一，是我国教育部认可的英国著名大学之一。目前在校学生2万多名，其中海外学生近3000人。伯明翰大学作为世界知名的顶尖学府，是世界级的研究型大学，是罗素大学集团成员，同时也是国际大学组织Universitas
-                                        21的创始会员。伯明翰大学优异的教学和科研在世界各地都享有极高的声誉。
+                                        <?= $school->description ?><a href="<?= Url::to(['article/view','id'=>$school->id]) ?>" class="btn btn-default btn-sm">详情</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                                           class="collapsed">
-                                            <i class="fa fa-bold"></i>英国伯明翰大学硕士项目
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseOne" class="panel-collapse collapse ">
-                                    <div class="panel-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                        cred nesciunt sapiente ea proident.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
-                                           class="collapsed">
-                                            <i class="fa fa-leaf"></i>英国埃塞克斯大学硕士项目
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseTwo" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                        cred nesciunt sapiente ea proident.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
-                                           class="collapsed">
-                                            <i class="fa fa-html5"></i>英国埃塞克斯大学硕士项目
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseThree" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                        cred nesciunt sapiente ea proident.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
-                                           class="collapsed">
-                                            <i class="fa fa-html5"></i>英国朴茨茅斯大学硕士项目
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseThree" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                        cred nesciunt sapiente ea proident.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
-                                           class="collapsed">
-                                            <i class="fa fa-html5"></i>美国德州A&M大学硕士项目
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseThree" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                        cred nesciunt sapiente ea proident.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
-                                           class="collapsed">
-                                            <i class="fa fa-html5"></i>美国迈阿密大学硕士项目
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseThree" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                        cred nesciunt sapiente ea proident.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
-                                           class="collapsed">
-                                            <i class="fa fa-html5"></i>新加坡管理大学硕士项目
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseThree" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                        cred nesciunt sapiente ea proident.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
-                                           class="collapsed">
-                                            <i class="fa fa-html5"></i>加拿大圭尔夫大学硕士项目
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseThree" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-                                        brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                        shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                        cred nesciunt sapiente ea proident.
-                                    </div>
-                                </div>
-                            </div>
+                                <?php }?>
+
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
@@ -359,12 +210,15 @@ $this->registerJs($js);
 
 <div class="section clearfix">
     <div class="container">
-        <h1 class="page-title">新闻中心</h1>
+        <h1 class="page-title">
+            <a href="<?= Url::to('article/index',['cate'=>'news']) ?>">
+                新闻中心</a>
+        </h1>
         <div class="separator-2"></div>
         <!-- masonry grid start -->
         <div class="masonry-grid row">
             <?= common\widgets\box\BoxWidget::widget([
-                'category' => Category::findOne(['slug' => 'study']),
+                'category' => Category::findOne(['slug' => 'news']),
                 //'config' => ['cate'=>14],
                 //'where' => ['category_id' => $category2->id],
                 'type' => 'masonry-grid-item',

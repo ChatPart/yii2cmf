@@ -89,7 +89,7 @@ $this->registerJs($js_category, \yii\web\View::POS_LOAD);
 
             <div class="main col-md-12">
                 <a class="loading btn btn-lg moving " style="display: none; position: absolute; right: 49%; top: 9px;"><i class="fa f fa-spinner "></i>loading</a>
-                <h2 class="page-title" style="font-weight: 700;">学校简介</h2>
+                <h3 class="page-title" style="font-weight: 700;">学校简介</h3>
                 <div class="separator-2"></div>
 
                 <div class="row">
@@ -102,8 +102,8 @@ $this->registerJs($js_category, \yii\web\View::POS_LOAD);
     top: -240px;
     z-index: 99;">
                             <div class="block clearfix" >
-                                <div class="overlay-container" style="padding: 0 45px;">
-                                    <img src="<?= isset($model->data->school_logo[0]) ? $model->data->school_logo[0] : '' ?>"
+                                <div class="school_logo overlay-container" style="padding: 0 45px;">
+                                    <img class="" src="<?= isset($model->data->school_logo[0]) ? $model->data->school_logo[0] : '' ?>"
                                          alt="">
                                     <a href="<?= isset($model->data->school_logo[0]) ? $model->data->school_logo[0] : '' ?>"
                                        class="overlay popup-img"
@@ -130,14 +130,14 @@ $this->registerJs($js_category, \yii\web\View::POS_LOAD);
                                     <!--<h3 class="title"> 项 目 详 情 </h3>-->
                                     <!--<div class="separator"></div>-->
                                     <nav>
-                                        <ul class="nav nav-pills nav-stacked us-category right_sidebar">
+                                        <ul class="nav nav-pills nav-stacked us-category right_sidebar font-15">
                                             <li>
                                                 <a data-cate="<?= $model->id ?>">
                                                     学校简介
                                                 </a>
                                             </li>
                                             <?php foreach ($model->data->categorys as $cate) { ?>
-                                                <li>
+                                                <li >
                                                     <a data-cate="<?= $cate->id ?>">
                                                         <?= $cate->title ?>
                                                     </a>
@@ -148,19 +148,19 @@ $this->registerJs($js_category, \yii\web\View::POS_LOAD);
                                     </nav>
                                 </div>
 
-                            <div class="block clearfix">
-                                <!--<h5 class="title margin-top-clear">可选专业 </h5>-->
+                            <!--<div class="block clearfix">
+                                <h5 class="title margin-top-clear">可选专业 </h5>
                                 <ul class="list-icons">
 
-                                    <!--<li><i class="fa fa-book pr-5"></i>经济学、金融学与银行学硕士</li>
+                                    <li><i class="fa fa-book pr-5"></i>经济学、金融学与银行学硕士</li>
                                     <li><i class="fa fa-file-text-o pr-5"></i>会计与金融学硕士</li>
                                     <li><i class="fa fa-file-text-o pr-5"></i> 人力资源管理硕士</li>
                                     <li><i class="fa  fa-file-o pr-5"></i> 电子商务营销硕士</li>
-                                    <li><i class="fa  fa-file-o pr-5"></i> 市场营销硕士</li>-->
+                                    <li><i class="fa  fa-file-o pr-5"></i> 市场营销硕士</li>
                                     <li><i class="fa   fa-share pr-5"></i><a href="mailto:johndoe@gmail.com">更多</a></li>
                                 </ul>
-                            </div>
-                            <div class="block clearfix">
+                            </div>-->
+                            <!--<div class="block clearfix">
 
 
                                 <h3 class="title">Tags</h3>
@@ -188,7 +188,7 @@ $this->registerJs($js_category, \yii\web\View::POS_LOAD);
                                         <a href="#">books</a>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                             </div>
                         </div>
                     </aside>
@@ -225,46 +225,7 @@ $this->registerJs($js_category, \yii\web\View::POS_LOAD);
                         </div>
                     </div>
                     <?php } ?>
-                    <div class="image-box object-non-visible" data-animation-effect="fadeInLeft"
-                         data-effect-delay="200">
-                        <div class="overlay-container">
-                            <img src="images/portfolio-2.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="image-box object-non-visible" data-animation-effect="fadeInLeft"
-                         data-effect-delay="100">
-                        <div class="overlay-container">
-                            <img src="images/portfolio-3.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="image-box object-non-visible" data-animation-effect="fadeInLeft" data-effect-delay="0">
-                        <div class="overlay-container">
-                            <img src="images/portfolio-4.jpg" alt="">
-                            <a href="portfolio-item.html" class="overlay small">
-                                <i class="fa fa-link"></i>
-                                <span>Web Design</span>
-                            </a>
-                        </div>
-                        <a href="portfolio-item.html" class="btn btn-light-gray btn-lg btn-block">Project Title</a>
-                    </div>
-                    <div class="image-box">
-                        <div class="overlay-container">
-                            <img src="images/portfolio-5.jpg" alt="">
-                            <a href="portfolio-item.html" class="overlay small">
-                                <i class="fa fa-link"></i>
-                                <span>Web Design</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="image-box">
-                        <div class="overlay-container">
-                            <img src="images/portfolio-6.jpg" alt="">
-                            <a href="portfolio-item.html" class="overlay small">
-                                <i class="fa fa-link"></i>
-                                <span>Web Design</span>
-                            </a>
-                        </div>
-                    </div>
+
 
                 </div>
 

@@ -32,7 +32,9 @@ class ArticleController extends Controller
                 throw new NotFoundHttpException('分类不存在');
             }
             $query = $query->andFilterWhere(['category_id' => $category->id]);
+            //$query = $query->andWhere(['category_id' => $category->id]);
         }
+        //var_dump($category->id);die();
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort' => [
@@ -47,11 +49,25 @@ class ArticleController extends Controller
         ]);
         // 热门标签
         $hotTags = Tag::hot();
-        return $this->render('index', [
+
+        try{
+            return $this->render($cate.'/index', [
+                'dataProvider' => $dataProvider,
+                'category' => $category,
+                'hotTags' => $hotTags
+            ]);
+        }catch (\yii\base\InvalidParamException $e){
+            return $this->render('index', [
+                'dataProvider' => $dataProvider,
+                'category' => $category,
+                'hotTags' => $hotTags
+            ]);
+        }
+        /*return $this->render('index', [
             'dataProvider' => $dataProvider,
             'category' => $category,
             'hotTags' => $hotTags
-        ]);
+        ]);*/
     }
 
     /**

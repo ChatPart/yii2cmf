@@ -14,10 +14,8 @@ use backend\widgets\category\CategoryWidget;
             <div class="col-xs-2 col-sm-6">
                 <div class="header-top-first clearfix">
                     <ul class="social-links clearfix hidden-xs">
-                        <li class="twitter"><a target="_blank" href="http://www.cssmoban.com"><i class="fa fa-twitter"></i></a></li>
-                        <li class="flickr"><a target="_blank" href="http://www.cssmoban.com"><i class="fa fa-flickr"></i></a></li>
-                        <li class="facebook"><a target="_blank" href="http://www.cssmoban.com"><i class="fa fa-facebook"></i></a></li>
-                        <li class="pinterest"><a target="_blank" href="http://www.cssmoban.com"><i class="fa fa-pinterest"></i></a></li>
+                        <li class="weibo"><a target="_blank" href="http://www.cssmoban.com"><i class="fa fa-weibo"></i></a></li>
+                        <li class="weixin"><a target="_blank" href="http://www.cssmoban.com"><i class="fa fa-wechat"></i></a></li>
                     </ul>
                     <div class="social-links hidden-lg hidden-md hidden-sm">
                         <div class="btn-group dropdown">
@@ -134,6 +132,7 @@ use backend\widgets\category\CategoryWidget;
                                 <ul class="dropdown-menu dropdown-menu-right dropdown-animation">
 
                                     <li><a href="<?= Url::toRoute('/dashboard/')?>">控制台 </a></li>
+                                    <li><a href="<?= Url::toRoute('/user/default/index',['id'=>2])?>">个人中心</a></li>
                                     <li><a href="">设置 </a></li>
                                     <li><?= Html::a(
                                             '退出',

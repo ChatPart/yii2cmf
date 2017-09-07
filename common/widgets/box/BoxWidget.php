@@ -39,7 +39,6 @@ class BoxWidget extends Widget
         parent::init();
     }
 
-
     public function run(){
         $this->registerClientScript();
 

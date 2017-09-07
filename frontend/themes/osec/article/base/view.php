@@ -48,30 +48,30 @@ list($this->title, $this->params['SEO_SITE_KEYWORDS'], $this->params['SEO_SITE_D
 
             </div>
             <div class="col-lg-offset-1 col-lg-3">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <ul class="tag-list list-inline">
-                            <?php foreach($model->tags as $tag): ?>
-                                <li><a class="label label-<?= $tag->level ?>" href="<?= Url::to(['article/tag', 'name' => $tag->name])?>"><?= $tag->name ?></a></li>
-                            <?php endforeach; ?>
-                        </ul>
+                <div class="block clearfix">
+
+                    <div class="tags-cloud">
+                        <?php foreach($model->tags as $tag): ?>
+                        <div class="tag">
+                                <a class="label label-<?= $tag->level ?>" href="<?= Url::to(['article/tag', 'name' => $tag->name])?>">
+                                    <?= $tag->name ?>
+                                </a>
+                        </div>
+                        <?php endforeach; ?>
+
                     </div>
                 </div>
+                <div class="block clearfix" style="position: relative;bottom: -100px;">
+                    <h4 class="title">热门讯息</h4>
+                    <div class="separator-2"></div>
+                    <ul class="list hot">
+                        <?php foreach ($hots as $item):?>
+                            <li><?= Html::a($item->title, ['/article/view', 'id' => $item->id])?></li>
+                        <?php endforeach;?>
 
-
-
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        热门<?=$model->category?>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="post-list">
-                            <?php foreach ($hots as $item):?>
-                                <li><?= Html::a($item->title, ['/article/view', 'id' => $item->id])?></li>
-                            <?php endforeach;?>
-                        </ul>
-                    </div>
+                    </ul>
                 </div>
+
             </div>
 
         </div>

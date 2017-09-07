@@ -270,7 +270,7 @@ a.overlay i {
 /* first level active menu items on hover/focus */
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:focus {
-	color: #dc4141;
+	color: #fa7154;
 	background-color: transparent;
 }
 

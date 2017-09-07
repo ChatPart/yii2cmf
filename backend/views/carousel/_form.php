@@ -13,6 +13,7 @@ use yii\helpers\Html;
     <?php $form = ActiveForm::begin(); ?>
 
     <?php echo $form->field($model, 'key')->textInput(['maxlength' => 1024]) ?>
+    <?php echo $form->field($model, 'title')->textInput(['maxlength' => 255]) ?>
 
     <?php echo $form->field($model, 'status')->checkbox() ?>
 

@@ -50,9 +50,12 @@ class Module extends \common\modules\Module implements BootstrapInterface
 
     public $urlRules = [];
 
+    //public $viewPath = '@root/views/dektrium';
+
     public function init()
     {
         parent::init();
+        $this->viewPath = '@root/frontend/themes/'.\Yii::$app->config->get('theme_name').'/user';  //当前主题视图
         if (!isset(Yii::$app->i18n->translations['user'])) {
             Yii::$app->i18n->translations['user'] = [
                 'class' => 'yii\i18n\PhpMessageSource',

@@ -89,7 +89,7 @@ use yii\bootstrap\Nav;
     <div class="m-header container">
 
         <div class="wrap clearfix" style="background: url(/xxa/images/callout-pattern.png) 44px -39px"><!---->
-            <div class="m-logo" style="    width: 363px;s">
+            <div class="m-logo" style=" width: 363px;s">
 
                 <a href="<?= \yii\helpers\Url::home() ?>" title="<?= Yii::$app->config->get('SITE_NAME') ?>"
                    style="width: 100%;font-size: 30px;color: #474749;

@@ -15,6 +15,7 @@ use common\models\CarouselItem;
 use yii\base\InvalidConfigException;
 use yii\bootstrap\Carousel;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 class CarouselWidget extends Carousel
 {
@@ -62,7 +63,31 @@ class CarouselWidget extends Carousel
                 }
 
                 if ($item->caption) {
-                    $items[$k]['caption'] = $item->caption;
+                    $applyBtn = Url::to('article/index',['cate'=>'school']);
+                    $h = <<<HTML
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-10 col-md-offset-1 text-center slider-text">
+                                        <div class="slider-text-inner">
+                                            <h1>{$item->caption}
+
+                                            </h1>
+                                            <h3> Overseas Study and Exchange Center (OSEC)</h3>
+                                            <p>
+                                                <a class="btn btn-white more btn-md" data-toggle="modal" data-target="#myModal">
+                                                    关于我们 <i class="pl-10 fa fa-info"></i>
+                                                </a> or
+                                                <a href="{$applyBtn}" class="btn btn-default contact btn-md">申请报名
+                                                    <i class="pl-10 fa fa-phone"></i></a>
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+HTML;
+
+                    $items[$k]['caption'] = $h;//$item->caption;
                 }
             }
             \Yii::$app->cache->set($cacheKey, $items, 60*60*24*365);

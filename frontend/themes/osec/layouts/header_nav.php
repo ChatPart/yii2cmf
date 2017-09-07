@@ -21,7 +21,7 @@ use backend\widgets\category\CategoryWidget;
                     <!-- logo -->
                     <div class="logo">
                         <a href="<?= \yii\helpers\Url::home() ?>" title="<?= Yii::$app->config->get('SITE_NAME') ?>" >
-                            <img src="<?= Yii::$app->config->get('SITE_LOGO') ?>">
+                            <img src="<?= Yii::$app->config->get('site_logo') ?>">
                         </a>
                     </div>
 

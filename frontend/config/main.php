@@ -35,7 +35,17 @@ return [
         'search' => [
             'class' => 'frontend\\components\\Search',
             'engine' => env('SEARCH_ENGINE', 'local')
-        ]
+        ],
+        /*"view" => [
+            "theme" => [
+                "pathMap" => [
+                    '@common/user' . '/frontend/views' => '@root/frontend/themes/osec/user',
+
+//"@app/views" => "@vendor/dmstr/yii2-lte-asset/example-views/yiisoft/yii2-app"
+                    "@vendor/dektrium/yii2-user/views" => "@app/views/dektrium"
+                ],
+            ],
+        ],*/
     ],
     'modules' => [
         'customer' => [

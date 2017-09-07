@@ -55,7 +55,7 @@ class Carousel extends ActiveRecord
     public function rules()
     {
         return [
-            [['key'], 'required'],
+            [['key','title'], 'required'],
             [['key'], 'unique'],
             [['status'], 'integer'],
             [['key', 'title'], 'string', 'max' => 255]
