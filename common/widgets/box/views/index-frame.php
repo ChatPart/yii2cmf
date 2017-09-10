@@ -47,7 +47,7 @@ margin-bottom: 6px;
     right: 0px;    background: rgb(255, 255, 255);
     padding: 2px 4px;
     color: #3fcdf7;
-"><?= Yii::$app->formatter->asDate($m->create_at, 'MM/dd') ?></span>
+"><?= Yii::$app->formatter->asDate($m->created_at, 'MM/dd') ?></span>
 
                     </div>
                 </div>

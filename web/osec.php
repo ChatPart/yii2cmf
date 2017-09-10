@@ -7,7 +7,6 @@ require __DIR__ . '/../env/osec/Yii.php';
 require __DIR__.'/../common/config/bootstrap.php';
 require __DIR__.'/../frontend/config/bootstrap.php';
 
-
 /*if (!checkInstalled()) {
     header("Location:install.php");
     die;

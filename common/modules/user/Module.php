@@ -55,7 +55,10 @@ class Module extends \common\modules\Module implements BootstrapInterface
     public function init()
     {
         parent::init();
-        $this->viewPath = '@root/frontend/themes/'.\Yii::$app->config->get('theme_name').'/user';  //当前主题视图
+        if (Yii::$app->id == 'frontend') {
+            $this->viewPath = '@root/frontend/themes/'.\Yii::$app->config->get('theme_name').'/user';  //当前主题视图
+
+        }
         if (!isset(Yii::$app->i18n->translations['user'])) {
             Yii::$app->i18n->translations['user'] = [
                 'class' => 'yii\i18n\PhpMessageSource',
@@ -76,7 +79,8 @@ class Module extends \common\modules\Module implements BootstrapInterface
                     $event->identity->touch('login_at');
                 },
                 'idParam' => '__idBackend',
-                'identityCookie' => ['name' => '_identityBackend', 'httpOnly' => true]
+                'identityCookie' => ['name' => '_identityBackend', 'httpOnly' => true],
+                //'viewPath' => $this->basePath . '/backend/views',
             ]);
         } else {
             Yii::$app->set('user', [
@@ -102,7 +106,8 @@ class Module extends \common\modules\Module implements BootstrapInterface
                             'time' => date('Y-m-d H:i:s')
                         ]
                     ]
-                ]
+                ],
+                //'viewPath' => '@root/frontend/themes/'.\Yii::$app->config->get('theme_name').'/user',  //当前主题视图,
             ]);
             $config = $this->params;
             $params = [

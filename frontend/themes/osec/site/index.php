@@ -13,8 +13,8 @@ $this->params['no_breadcrumb'] = true;
 
 $this->params['breadcrumbs'] = null;//$this->title;
 $this->blocks['content-header'] = '';
-
 $this->registerCssFile('@web/plugins/flexslider/flexslider.css', []);
+
 //$this->registerCssFile('@web/ic/plugins/magnific-popup/magnific-popup.css',[]);
 //$this->registerCssFile('@web/ic/plugins/owl-carousel/owl.carousel.css',[]);
 
@@ -172,6 +172,7 @@ $this->registerJs($js);
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?= $school->id ?>" class="collapsed">
                                             <img style="width: 50px;max-height: 50px;display: inline;background: #fff;" src="<?= @$school->data->school_logo[0] ?>" />
+
                                             <span style="padding-left: 18px"></span><?= $school->title ?>
                                         </a>
                                     </h4>

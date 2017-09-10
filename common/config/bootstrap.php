@@ -3,6 +3,8 @@ Yii::$classMap['yii\helpers\Html'] = '@common/helpers/Html.php';
 Yii::$classMap['yii\helpers\Markdown'] = '@common/helpers/Markdown.php';
 
 Yii::setAlias('root', dirname(dirname(__DIR__)));
+//Yii::setAlias('root', dirname(__DIR__));
+//Yii::setAlias('root', 'cc');
 Yii::setAlias('common', dirname(__DIR__));
 Yii::setAlias('frontend', dirname(dirname(__DIR__)) . '/frontend');
 Yii::setAlias('backend', dirname(dirname(__DIR__)) . '/backend');
@@ -14,6 +16,7 @@ Yii::setAlias('plugins', dirname(dirname(__DIR__)) . '/plugins');
 
 
 
+//Yii::setAlias('storagePath', '/home/workspace/cmf/web/storage');
 Yii::setAlias('storagePath', '@root/web/storage');
 Yii::setAlias('storageUrl', env('SITE_URL') . '/storage');
 
