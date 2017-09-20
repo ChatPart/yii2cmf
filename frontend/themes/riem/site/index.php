@@ -33,7 +33,7 @@ position: relative;
 
 <div class="container" style="padding-left: 0px;padding-right: 0px">
     <?= \frontend\widgets\slider\CarouselWidget::widget([
-        'key' => 'cc',
+        'key' => 'riem',
         'options' => [
             'class' => 'mb15 home-carousel',
         ],

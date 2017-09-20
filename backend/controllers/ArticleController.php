@@ -176,6 +176,11 @@ class ArticleController extends Controller
                 Yii::$app->session->setFlash('success', '发布成功');
             } catch (\Exception $e) {
 
+                echo $e->getMessage();
+                echo $e->getCode();die();
+                //var_dump($e);
+//var_dump($moduleModel->errors);
+//var_dump($model->errors);die();
                 $transaction->rollBack();
                 Yii::$app->session->setFlash('error', $e->getMessage());
             }

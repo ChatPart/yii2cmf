@@ -16,14 +16,16 @@ class Module extends \common\modules\Module implements BootstrapInterface
 {
     public function bootstrap($app)
     {
+
         $storage = [
             'class' => 'common\modules\attachment\components\FilesystemManager',
             'defaultDriver' => $this->params['default_driver'],
             'disks' => [
                 'local' => [
                     'class' => 'common\\modules\\attachment\\components\\flysystem\\LocalFilesystem',
-                    'path' => \Yii::getAlias($this->params['local_root']),
-                    'url' => \Yii::getAlias($this->params['local_url']),
+                    //'path' => __DIR__.'storage',//\Yii::$app->config->get('local_root'),//\Yii::getAlias($this->params['local_root']),
+                    'path' => \Yii::getAlias('@storagePath').'/upload',
+                    'url' => \Yii::getAlias('@storageUrl').'/upload' //\Yii::$app->config->get('site_url').\Yii::$app->config->get('local_root'),//\Yii::getAlias($this->params['local_url']),
                 ],
                 'qiniu' => [
                     'class' => 'common\\modules\\attachment\\components\\flysystem\\QiniuFilesystem',

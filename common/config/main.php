@@ -18,8 +18,10 @@ return [
             'class' => 'yii\mongodb\Connection',
             // 有账户的配置
             //'dsn' => 'mongodb://username:password@localhost:27017/datebase',
+            //'dsn' => 'mongodb://gl:gl@119.23.134.248:27017/oa',
+            'dsn' => 'mongodb://gl:gl@119.23.134.248:27017/oa',
             // 无账户的配置
-            'dsn' => 'mongodb://127.0.0.1:27017/oa',
+            //'dsn' => 'mongodb://127.0.0.1:27017/oa',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',

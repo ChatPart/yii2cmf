@@ -280,6 +280,8 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract, 
     {
         $adapter = $this->driver->getAdapter();
 
+        //var_dump($adapter);
+
         if (method_exists($adapter, 'getUrl')) {
             return $adapter->getUrl($path);
         } elseif ($adapter instanceof QiniuAdapter) {
@@ -311,7 +313,8 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract, 
      */
     protected function getLocalUrl($path)
     {
-        $url = $this->driver->url;
+        //$url = $this->driver->url;
+        $url = \Yii::$app->config->get('storage_url')?:$this->driver->url;
         return rtrim($url, '/').'/'.ltrim($path, '/');
 
     }

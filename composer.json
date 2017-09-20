@@ -40,7 +40,9 @@
         "qiniu/php-sdk": "^7.1",
         "yiisoft/yii2-mongodb": "^2.1",
         "maxwen/yii2-easy-wechat": "^1.0",
-        "stoneworld/wechat": "^2.2"
+        "stoneworld/wechat": "^2.2",
+        "briarbear/yii2": "^1.0",
+        "briarbear/yii2-log": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "*",

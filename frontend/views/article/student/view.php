@@ -10,7 +10,7 @@ $model = $model->data;
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('jiaowu', '在读博士'), 'url' => ['/student/list']];
 $this->params['breadcrumbs'][] = $this->title;
-$this->registerCssFile('@web/plugins/student/css/style.css',['depends'=>['yii\bootstrap\BootstrapAsset']]);
+$this->registerCssFile('@web/riem/plugins/student/css/style.css',['depends'=>['yii\bootstrap\BootstrapAsset']]);
 
 ?>
 <div class="student-view">

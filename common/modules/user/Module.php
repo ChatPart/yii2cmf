@@ -74,6 +74,7 @@ class Module extends \common\modules\Module implements BootstrapInterface
                 'class' => 'yii\web\User',
                 'identityClass' => 'common\modules\user\models\User',
                 'loginUrl' => ['/user/default/login'],
+                //'loginUrl' => ['/user/security/login'],
                 'enableAutoLogin' => true,
                 'on afterLogin' => function($event) {
                     $event->identity->touch('login_at');

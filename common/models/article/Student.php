@@ -41,8 +41,9 @@ class Student extends \yii\db\ActiveRecord
     {
         return [
             [['id'], 'required'],
-            [['created_at', 'grade', 'due'], 'safe'],
+            [['created_at'], 'safe'],
             [['status'], 'integer'],
+            [['grade','due'], 'number','max'=>9],
             [['info', 'achievement'], 'string'],
             [['student_id', 'name', 'email', 'job', 'degree', 'tagMajors'], 'string', 'max' => 255],
             [['major'], 'string', 'max' => 100],

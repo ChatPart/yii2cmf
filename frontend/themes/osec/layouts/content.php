@@ -24,7 +24,7 @@ if (!isset($this->params['no_banner'])) { ?>
         } ?>
     </section>
     <div class="banner">
-        <div class="fixed-image section dark-translucent-bg" style="background-image:url('<?= isset($this->params['banner']['pic'])?$this->params['banner']['pic']:'/osec/images/portfolio/default_img.png' ?>');">
+        <div class="fixed-image section dark-translucent-bg" style="background-image:url('<?= isset($this->params['banner']['pic'])?$this->params['banner']['pic']:'/cmf/osec/images/portfolio/default_img.png' ?>');">
             <div class="container">
                 <div class="space-top" style="padding-top: 124px;"></div>
                 <div class="space-top"></div>

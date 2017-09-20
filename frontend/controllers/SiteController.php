@@ -55,6 +55,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        //var_dump(Yii::$app->storage);die();
         $dataProvider = new ActiveDataProvider([
             'query' => Article::find()->published(),
             'sort' => [
@@ -92,4 +93,12 @@ class SiteController extends Controller
 
         return $urls;
     }
+
+    public function actionWs()
+    {
+       $this->layout = false;
+        return $this->render('ws');
+    }
+
+
 }

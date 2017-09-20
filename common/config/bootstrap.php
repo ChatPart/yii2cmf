@@ -13,10 +13,9 @@ Yii::setAlias('wechat', dirname(dirname(__DIR__)) . '/wechat');
 Yii::setAlias('console', dirname(dirname(__DIR__)) . '/console');
 Yii::setAlias('database', dirname(dirname(__DIR__)) . '/database');
 Yii::setAlias('plugins', dirname(dirname(__DIR__)) . '/plugins');
+Yii::setAlias('local_root', dirname(dirname(__DIR__)) . '/plugins');
 
 
-
-//Yii::setAlias('storagePath', '/home/workspace/cmf/web/storage');
 Yii::setAlias('storagePath', '@root/web/storage');
 Yii::setAlias('storageUrl', env('SITE_URL') . '/storage');
 

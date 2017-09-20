@@ -73,6 +73,7 @@ class FilesystemManager extends Component implements Factory
 
     public function getPath($url)
     {
+        //return $url;
         return trim(str_replace($this->baseUrl, '', $url), '/');
     }
 

@@ -32,6 +32,8 @@ class SuggestController extends Controller
     }
     public function actionIndex()
     {
+
+
         $query = Suggest::find()->orderBy('id desc');
         $dataProvider = new ActiveDataProvider(['query' => $query]);
         return $this->render('index', [

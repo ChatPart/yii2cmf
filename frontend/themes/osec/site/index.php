@@ -173,6 +173,7 @@ $this->registerJs($js);
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?= $school->id ?>" class="collapsed">
                                             <img style="width: 50px;max-height: 50px;display: inline;background: #fff;" src="<?= @$school->data->school_logo[0] ?>" />
 
+
                                             <span style="padding-left: 18px"></span><?= $school->title ?>
                                         </a>
                                     </h4>
@@ -185,20 +186,6 @@ $this->registerJs($js);
                             </div>
                                 <?php }?>
 
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
-                                           class="collapsed">
-                                            <i class="fa fa-html5"></i>西澳大利亚大学硕士项目
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseThree" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
