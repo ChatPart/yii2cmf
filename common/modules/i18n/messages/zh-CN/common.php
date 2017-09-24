@@ -83,4 +83,5 @@ return [
     'updated success' => '更新成功',
     'created error.{0}' => '创建失败.{0}',
     'updated error.{0}' => '更新失败.{0}',
+    '中文' => 'English',
 ];

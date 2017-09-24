@@ -85,7 +85,7 @@ class BoardController extends ActiveController
         //$tasks = [];
 
         foreach ($task_lists as $taskList){
-            $task_lists['task'] = Task::find()->where(['task_list_id'=>$taskList->id])->all();
+            $task_lists['task'] = Task::find()->where(['task_list_id'=>$taskList->_id])->all();
         }
 
         $provider = new ArrayDataProvider([

@@ -15,14 +15,14 @@ use yii\helpers\Url;
             <?php foreach ( $ac as $m):?>
             <li class="item">
                 <div class="product-img">
-                    <img src="<?= empty($m->pic)?Url::to('@web'.'/images/icon/icon1.png'):Url::to('@web'.$m->pic)?>" alt="<?=$m->title?>">
+                    <img src="<?= empty($m->pic)?Url::to('@web'.'/images/icon/icon1.png'):Url::to('@web'.$m->cover)?>" alt="<?=$m->title?>">
                 </div>
                 <div class="product-info">
-                    <a href="<?=Url::to(['/'.$model->tableName().'/view/','id'=>$m->id])?>" class="product-title">
+                    <a href="<?= Url::to(['article/view','id'=>$m->id])?>" class="product-title">
                         <?=$m->title?>
                         <!--<span class=" pull-left">800</span>--></a>
                         <span class="product-description">
-                          <?=$m->breviary?>
+                          <?=$m->description?>
                         </span>
                 </div>
             </li>

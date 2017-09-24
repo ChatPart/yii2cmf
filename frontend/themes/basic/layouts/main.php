@@ -34,7 +34,7 @@ $this->registerMetaTag([
 <body>
 <?php $this->beginBody() ?>
 <?php if (!(new \Detection\MobileDetect())->isMobile()): ?>
-<?= $this->render('_header') ?>
+<?= $this->render('_header') ?>sdfsdfsdfsdf
 <?php else: ?>
     <?= $this->render('_nav') ?>
 <?php endif; ?>
