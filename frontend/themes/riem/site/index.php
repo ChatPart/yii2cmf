@@ -56,28 +56,12 @@ position: relative;
                 'css' => ['warper' => 'box-widget index-box ', 'header' => 'with-border index-box-header', 'title' => 'index-box-title', 'icon' => 'index-box-icon bicon-news', 'body' => 'box-profile blue-border',],
             ]) ?>
 
-            <?/*= common\widgets\box\BoxWidget::widget([
-                'model'=>\common\models\Document::className(),
-                //'config' => ['cate'=>14],
-                'where' => ['or','cate=96','cate=14'],
-                'type' => 'listPic_m',
-                //'cate' => 14,
-                'sort' => [
-                    'create_at' => SORT_DESC,
-                    //'name' => SORT_DESC,
-                ],
-                'pic' => true,
-                'title' =>  'News',
-                //'title' => Yii::t('common', 'News'),
-                'url' => Url::toRoute(['document/list', 'cate' => 14]),
-                'liNum' => 4,
-                'css' => ['warper' => 'box-widget index-box ', 'header' => 'with-border index-box-header', 'title' => 'index-box-title', 'icon' => 'index-box-icon bicon-news', 'body' => 'box-profile blue-border',],
-            ]) */?>
+
 
         </div>
         <div class="col-md-4 wbox" style="height: 446px;">
             <?= common\widgets\box\BoxWidget::widget([
-                'category' => Category::findOne(['slug' => 'news']),
+                'category' => Category::findOne(['slug' => 'macro_news']),
                 'type' => 'index-frame',
                 //'cate' => 14,
                 'sort' => [
@@ -149,24 +133,7 @@ position: relative;
                 'url' => Url::toRoute(['document/list', 'cate' => 14]),
                 'css' => ['warper' => 'box-widget index-box ', 'header' => 'with-border index-box-header', 'title' => 'index-box-title', 'icon' => 'index-box-icon bicon-news', 'body' => 'box-profile blue-border',],
             ]) ?>
-            <?php/*= common\widgets\box\BoxWidget::widget([
-                'model'=>\common\models\Document::className(),
-                //'config' => ['cate'=>14],
-                'where' => ['or','cate=93','cate=94','cate=95'],
-                'type' => 'listPic_m',
-                //'cate' => 14,
-                'sort' => [
-                    'level' => SORT_DESC,
-                    'create_at' => SORT_DESC,
-                    //'name' => SORT_DESC,
-                ],
-                'pic' => true,
-                //'title' => Yii::t('common', '学术活动'),
-                'title' => Yii::t('common', 'Seminar'),
-                'url' => Url::toRoute(['document/max-list', 'cate' => 94]),
-                'liNum' => 4,
-                'css' => ['warper' => 'box-widget index-box blue-border', 'title' => 'index-box-title', 'header' => 'with-border index-box-header', 'icon' => 'index-box-icon bicon-laba', 'body' => 'box-profile',]
-            ]) */?>
+
 
         </div>
     </div>

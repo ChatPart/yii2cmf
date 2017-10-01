@@ -37,7 +37,7 @@ use yii\helpers\Html;
             ?>
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="<?= Yii::$app->user->identity->profile->gravatar_email ?>" class="user-image" alt="User Image"/>
+                        <img src="<?= Yii::$app->user->identity->profile->avatar ?>" class="user-image" alt="User Image"/>
                         <span class="hidden-xs"><?= Yii::$app->user->identity->username ?></span>
                     </a>
                 <ul class="dropdown-menu">

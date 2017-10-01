@@ -109,6 +109,16 @@ class Nav extends \yii\db\ActiveRecord
                 $value['linkOptions'] = ['target' => '_blank'];
             }
 
+            $value['items'] = array_map(function($value){
+                $value['url'] = Util::parseUrl($value['url']);
+                if ($value['target'] == 1) {
+                    $value['linkOptions'] = ['target' => '_blank'];
+                }
+
+
+                return $value;
+            }, $value['items']);
+
             return $value;
         }, $items);
     }

@@ -114,7 +114,7 @@ frontend\themes\riem\assets\AdminLteAsset::register($this);
                                 ?>
                                 <li class="dropdown user user-menu">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <img src="<?= Yii::$app->user->identity->profile->gravatar_email ?>"
+                                        <img src="<?= Yii::$app->user->identity->profile->avatar ?>"
                                              class="user-image" alt="User Image"/>
                                         <span class="hidden-xs"><?= Yii::$app->user->identity->username ?></span>
                                     </a>

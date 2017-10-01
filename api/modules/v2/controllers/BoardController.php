@@ -35,8 +35,6 @@ class BoardController extends ActiveController
         //unset($actions['index']);
         return $actions;
     }
-
-
     public function actionIndex($query = null)
     {
         $command = json_decode($query,true);
@@ -59,19 +57,18 @@ class BoardController extends ActiveController
 
         return $dataProvider;
     }
+
     public function actionBoardother($board_id)
     {
         /*$command = json_decode($query,true);
         if($command == null){
             $command =[];
         }*/
-
         //$board = Board::findOne($board_id);
             //->andFilterWhere($command);
 
         $task_listQuery = TaskList::find()
             ->andFilterWhere(['board_id'=>$board_id]);
-
         /*$task_lists = new ActiveDataProvider([
             'query' => $task_listQuery,
             'sort' => [
@@ -83,7 +80,6 @@ class BoardController extends ActiveController
         $task_lists = TaskList::find()->where(['board_id'=>$board_id])->all();
 
         //$tasks = [];
-
         foreach ($task_lists as $taskList){
             $task_lists['task'] = Task::find()->where(['task_list_id'=>$taskList->_id])->all();
         }

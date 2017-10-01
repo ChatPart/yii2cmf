@@ -13,6 +13,7 @@ use yii\helpers\StringHelper;
  *
  * @property int $id
  * @property string $content
+ * @property string $author
  * @property integer $markdown
  */
 class Base extends \yii\db\ActiveRecord
@@ -35,6 +36,7 @@ class Base extends \yii\db\ActiveRecord
             [['id', 'markdown'], 'integer'],
             ['markdown', 'default', 'value' => $this->getIsMarkdown()],
             [['content'], 'string'],
+            [['author'], 'string','max'=>255],
         ];
     }
 
@@ -59,6 +61,7 @@ class Base extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'content' => '内容',
+            'author' => '编辑',
             'markdown' => '是否markdown格式'
         ];
     }

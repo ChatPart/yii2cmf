@@ -65,9 +65,9 @@ class CarouselWidget extends Carousel
                 if ($item->caption) {
                     $applyBtn = Url::to('article/index',['cate'=>'school']);
                     $h = <<<HTML
-                            <div class="container">
+                            <div class="">
                                 <div class="row">
-                                    <div class="col-md-10 col-md-offset-1 text-center slider-text">
+                                    <div class="col-xs-12  text-center slider-text">
                                         <div class="slider-text-inner">
                                             <h1>{$item->caption}
 

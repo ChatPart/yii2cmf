@@ -8,12 +8,13 @@ class WebSocketServer
 
     public function __construct()
     {
-        $this->_serv = new \swoole_websocket_server("127.0.0.1", 9501);
+        $this->_serv = new \swoole_websocket_server("127.0.0.1", 9502);
         $this->_serv->set([
             'worker_num' => 1,
         ]);
         $this->_serv->on('open', [$this, 'onOpen']);
         $this->_serv->on('message', [$this, 'onMessage']);
+        //$this->_serv->on('login', [$this, 'onMessage']);
         $this->_serv->on('close', [$this, 'onClose']);
     }
 
@@ -33,8 +34,10 @@ class WebSocketServer
     public function onMessage($serv, $frame)
     {
         echo $frame->data;
+        echo json_decode($frame->data)."\n";
         //$serv->push($frame->fd, "server received data :{$frame->data}");
-        $ret = ['cmd'=>'test','username'=>'999999999'];
+        $ret = ['cmd'=>'login','username'=>'999999999','token'=>'ccccc'];
+
         $serv->push($frame->fd, json_encode($ret));
     }
 

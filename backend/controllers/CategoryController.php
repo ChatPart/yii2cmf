@@ -5,6 +5,7 @@ namespace backend\controllers;
 use common\models\Category;
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\data\Pagination;
 use yii\helpers\Url;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -43,10 +44,20 @@ class CategoryController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider(['query' => Category::find()]);
+        $dataProvider = new ActiveDataProvider([
+            'query' => Category::find(),
+            'pagination' => [
+                  'pageSize' => 20,
+              ],
+        ]);
+
+        $totalCount = $dataProvider->getTotalCount();
+        $pagination = new Pagination([ 'totalCount' =>$totalCount, 'pageSize' => 20]);
+
         return $this->render('index', [
             'dataProvider' => $dataProvider,
-            'pagination' => false
+            'pagination' => $pagination,
+
         ]);
     }
     /**

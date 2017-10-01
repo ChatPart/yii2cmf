@@ -100,5 +100,11 @@ class SiteController extends Controller
         return $this->render('ws');
     }
 
+    public function actionChat()
+    {
+        //$this->layout = false;
+        return $this->render('chat');
+    }
+
 
 }

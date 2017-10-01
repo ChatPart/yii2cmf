@@ -49,4 +49,12 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]); ?>
     </div>
+    <div class="box-footer clearfix">
+        <?= \yii\widgets\LinkPager::widget([
+            'pagination' => $pagination,
+            'firstPageLabel'=>'首页',
+            'lastPageLabel'=>'末页',
+            //'linkOptions' =>['frist']
+        ]);?>
+    </div>
 </div>

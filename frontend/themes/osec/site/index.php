@@ -70,6 +70,7 @@ $this->registerJs($js);
 <div id="container" class="cf">
     <div id="main" role="main">
         <section class="slider">
+
             <?= \frontend\widgets\slider\CarouselWidget::widget([
                 'key' => 'osec',
                 'options' => [

@@ -77,7 +77,7 @@ class Article extends \yii\db\ActiveRecord
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_PENDING]],
             [['category_id'], 'setCategory'],
             ['category_id', 'exist', 'targetClass' => Category::className(), 'targetAttribute' => 'id'],
-            [['title', 'category'], 'string', 'max' => 50],
+            [['title', 'category'], 'string', 'max' => 255],
             [['source'], 'string', 'max' => 255],
             [['description'], 'string'],
             [['category_id', 'status', 'view'], 'filter', 'filter' => 'intval'],

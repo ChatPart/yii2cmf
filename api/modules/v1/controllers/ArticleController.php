@@ -58,4 +58,23 @@ class ArticleController extends Controller
         $model->addView();
         return $model;
     }
+
+    public function actionList($cid = null, $module = null)
+    {
+        $query = Article::find()->published()
+            ->andFilterWhere(['category_id' => $cid])
+            ->andFilterWhere(['module' => $module]);
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'id' => SORT_DESC
+                ]
+            ],
+            'pagination' => [
+                'pageSize' => 6,
+            ],
+        ]);
+        return $dataProvider;
+    }
 }

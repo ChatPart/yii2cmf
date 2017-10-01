@@ -30,31 +30,23 @@ class MaxController extends Controller
      * @apiParam {String} password  密码
      *
      */
-    public function actionBoardother($board_id)
+    public function actionBoard($id)
     {
-        $board = Board::findOne($board_id);
-        $task_lists = TaskList::find()->where(['board_id'=>$board_id])->all();
+        $board = Board::findOne($id);
+        $task_lists = TaskList::find()->where(['board_id'=>$id])->asArray()->all();
 
-        $tasks = [];
 
-        foreach ($task_lists as $k=>$taskList){
-            $task = Task::find()
-                ->where(['task_list_id'=>$taskList->$task_lists[$k]->_id])->asArray()
+
+        foreach ($task_lists as $k =>$taskList){
+            //$data['task_list'][] = $taskList;
+            $task_lists[$k]['task'] = @Task::find()
+                ->where(['task_list_id'=>(string)$taskList['_id']])->asArray()
                 ->all();
-
-            $tasks[] = $task_lists[$k]->_id;
-            /*if(!empty($task)){
-                //$task_lists[$k]['tasks'] =$tasks;
-                $task_lists[$k]->tasks=99;//$task;
-
-            }*/
-
         }
-
 
         $data['board'] = $board;
         $data['task_list'] = $task_lists;
-        $data['tasks'] = $tasks;
+        //$data['tasks'] = $tasks;
 
         $provider = new ArrayDataProvider([
             'allModels' => $data,
