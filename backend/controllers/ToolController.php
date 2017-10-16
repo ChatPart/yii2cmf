@@ -78,6 +78,7 @@ class ToolController extends Controller
 
             $documents = \Yii::$app->db->createCommand('SELECT * FROM document WHERE cate ='.$cate['id'])
                 ->queryAll();
+
             foreach ($documents as $document){
 
                 $category = Category::findOne(['title'=>$cate['name']]);
@@ -92,8 +93,8 @@ class ToolController extends Controller
                 $article->title = $document['title'];
                 $article->category_id = $category_id;
                 $article->status = 1;
-                $article->published_at = (int)$document['create_at'];
-                $article->created_at = (int)$document['create_at'];
+                $article->published_at = $document['create_at'];
+                $article->created_at = $document['create_at'];
                 $article->module = 'base';
                 $article->description = $document['breviary'];
 

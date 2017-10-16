@@ -23,12 +23,12 @@ use yii\helpers\Url;
         </div>
     </div></a>
     <div class="box-body <?=$css['body']?>">
+
         <?php foreach ( $ac as $m):?>
-        <div class="attachment-block ">
+        <div class="attachment-block">
             <img class="attachment-img" src="<?=$m->cover?>" alt="Attachment Image">
             <div class="attachment-pushed">
-                <h4 class="attachment-heading listpic-text" style="font-size: 15px; height: 22px;white-space: nowrap;
-text-overflow: ellipsis;">
+                <h4 class="attachment-heading listpic-text" style="">
                     <a href="<?=Url::to(['article/view','id'=>$m->id])?>"><?=$m->title?></a>
                 </h4>
 

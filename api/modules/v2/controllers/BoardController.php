@@ -32,11 +32,14 @@ class BoardController extends ActiveController
             'modelClass' => $this->modelClass,
             'checkAccess' => [$this, 'checkAccess'],
         ];*/
-        //unset($actions['index']);
+
+        unset($actions['index']);
         return $actions;
     }
+
     public function actionIndex($query = null)
     {
+
         $command = json_decode($query,true);
         if($command == null){
             $command =[];
@@ -58,56 +61,7 @@ class BoardController extends ActiveController
         return $dataProvider;
     }
 
-    public function actionBoardother($board_id)
-    {
-        /*$command = json_decode($query,true);
-        if($command == null){
-            $command =[];
-        }*/
-        //$board = Board::findOne($board_id);
-            //->andFilterWhere($command);
 
-        $task_listQuery = TaskList::find()
-            ->andFilterWhere(['board_id'=>$board_id]);
-        /*$task_lists = new ActiveDataProvider([
-            'query' => $task_listQuery,
-            'sort' => [
-                'defaultOrder' => [
-                    'created_at' => SORT_ASC
-                ]
-            ]
-        ]);*/
-        $task_lists = TaskList::find()->where(['board_id'=>$board_id])->all();
-
-        //$tasks = [];
-        foreach ($task_lists as $taskList){
-            $task_lists['task'] = Task::find()->where(['task_list_id'=>$taskList->_id])->all();
-        }
-
-        $provider = new ArrayDataProvider([
-            'allModels' => $task_lists,
-            'pagination' => [
-                'pageSize' => 10,
-            ],
-            'sort' => [
-                'attributes' => ['created_at'],
-            ],
-        ]);
-        //var_dump($provider);
-        $myQuery = $this->modelClass::find()
-            ->andFilterWhere(['board_id'=>$board_id]);
-
-
-        $dataProvider = new ActiveDataProvider([
-            'query' => $myQuery,
-            'sort' => [
-                'defaultOrder' => [
-                    '_id' => SORT_DESC
-                ]
-            ]
-        ]);
-        return $dataProvider;
-    }
 
 
 }

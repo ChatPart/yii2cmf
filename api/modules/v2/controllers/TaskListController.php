@@ -38,6 +38,10 @@ class TaskListController extends ActiveController
         return $actions;
     }
 
+    public function actionTasks(){
+        echo 'ccc';
+    }
+
 //    public function actionUpdate()
 //    {
 //        return Yii::createObject([

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6c5571631b6bfdab55c92e4645b231a4",
-    "content-hash": "e5bd1bc5ca8926d3c7077def7f11cb4b",
+    "hash": "be859e48e9f68d441ba365cca560c337",
+    "content-hash": "abd66baa1b48f47cd89c9d5a631ce506",
     "packages": [
         {
             "name": "2amigos/yii2-editable-widget",
@@ -94,6 +94,100 @@
                 "qrcode"
             ],
             "time": "2013-07-08 09:39:08"
+        },
+        {
+            "name": "aki/yii2-vue",
+            "version": "0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/akbarjoudi/yii2-vue.git",
+                "reference": "e8d6af719790ec78dd2858331440305b01f60f9f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/akbarjoudi/yii2-vue/e8d6af719790ec78dd2858331440305b01f60f9f.zip",
+                "reference": "e8d6af719790ec78dd2858331440305b01f60f9f",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/axios": "*",
+                "bower-asset/vue": "*",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "aki\\vue\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "akbar joudi",
+                    "email": "akbar.joody@gmail.com"
+                }
+            ],
+            "description": "for yii2 web application ",
+            "keywords": [
+                " akbar-joudi",
+                " vue.js",
+                " vuejs",
+                " yii2",
+                " yii2-vue",
+                "vue",
+                "yii2"
+            ],
+            "time": "2017-02-21 09:35:10"
+        },
+        {
+            "name": "bower-asset/axios",
+            "version": "v0.16.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axios/axios.git",
+                "reference": "46e275c407f81c44dd9aad419b6e861d8a936580"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axios/axios/zipball/46e275c407f81c44dd9aad419b6e861d8a936580",
+                "reference": "46e275c407f81c44dd9aad419b6e861d8a936580",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "./dist/axios.js",
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "*.iml",
+                    "examples",
+                    "lib",
+                    "node_modules",
+                    "sandbox",
+                    "test",
+                    "CONTRIBUTING.md",
+                    "COOKBOOK.md",
+                    "Gruntfile.js",
+                    "index.js",
+                    "karma.conf.js",
+                    "package.json",
+                    "webpack.*.js"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Promise based HTTP client for the browser and node.js",
+            "keywords": [
+                "ajax",
+                "http",
+                "node",
+                "promise",
+                "xhr"
+            ],
+            "time": "2017-06-03 19:28:26"
         },
         {
             "name": "bower-asset/blueimp-canvas-to-blob",
@@ -438,6 +532,22 @@
             }
         },
         {
+            "name": "bower-asset/vue",
+            "version": "v2.1.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vuejs/vue.git",
+                "reference": "994aee4f869d68a00c3b9d87daa9c8d84623ac42"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vuejs/vue/zipball/994aee4f869d68a00c3b9d87daa9c8d84623ac42",
+                "reference": "994aee4f869d68a00c3b9d87daa9c8d84623ac42",
+                "shasum": ""
+            },
+            "type": "bower-asset-library"
+        },
+        {
             "name": "bower-asset/yii2-pjax",
             "version": "v2.0.6",
             "source": {
@@ -605,6 +715,55 @@
                 "yii2"
             ],
             "time": "2017-09-01 11:17:07"
+        },
+        {
+            "name": "bubasuma/yii2-simplechat",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bubasuma/yii2-simplechat.git",
+                "reference": "1d3c2c30df72d29ff1a0bf62832275f14893a1de"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/bubasuma/yii2-simplechat/1d3c2c30df72d29ff1a0bf62832275f14893a1de.zip",
+                "reference": "1d3c2c30df72d29ff1a0bf62832275f14893a1de",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "require-dev": {
+                "bower-asset/twig.js": "0.8.4@stable",
+                "yiisoft/yii2-bootstrap": "~2.0.0",
+                "yiisoft/yii2-faker": "*",
+                "yiisoft/yii2-twig": "dev-master"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "bubasuma\\simplechat\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Buba Suma",
+                    "email": "bubasuma@gmail.com"
+                }
+            ],
+            "description": "A simple chat for your yii2 application",
+            "keywords": [
+                "chat",
+                "conversation",
+                "extension",
+                "message",
+                "yii2"
+            ],
+            "time": "2016-06-19 07:00:25"
         },
         {
             "name": "cebe/markdown",
@@ -2069,6 +2228,50 @@
                 "dependency injection"
             ],
             "time": "2017-07-23 07:32:15"
+        },
+        {
+            "name": "prawee/yii2-vuejs",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/prawee/yii2-vuejs.git",
+                "reference": "89ed210cc136680e29ca00e4f3fcca1cf102a77b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/prawee/yii2-vuejs/89ed210cc136680e29ca00e4f3fcca1cf102a77b.zip",
+                "reference": "89ed210cc136680e29ca00e4f3fcca1cf102a77b",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/vue": "~2.1.10",
+                "yiisoft/yii2": ">=2.0.10"
+            },
+            "type": "yii2-library",
+            "autoload": {
+                "psr-4": {
+                    "prawee\\vuejs\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Prawee Wongsa",
+                    "email": "konkeanweb@gmail.com"
+                }
+            ],
+            "description": "Vue.js library for Yii2",
+            "homepage": "https://github.com/prawee/yii2-vuejs.git",
+            "keywords": [
+                "library",
+                "vue",
+                "vuejs2",
+                "yii2"
+            ],
+            "time": "2017-06-21 11:29:05"
         },
         {
             "name": "psr/container",
@@ -3741,7 +3944,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "raulfraile/distill": 0,
-        "hightman/xunsearch": 10
+        "hightman/xunsearch": 10,
+        "prawee/yii2-vuejs": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -74,6 +74,8 @@ class SiteController extends Controller
         ]);
     }
 
+
+
     /**
      * 网站地图，百度搜索引擎爬虫用.
      *
@@ -105,6 +107,15 @@ class SiteController extends Controller
         //$this->layout = false;
         return $this->render('chat');
     }
+    public function actionVue()
+    {
+        $this->layout = false;
+        return $this->render('vue');
+    }
 
+    /*public function actionIndex(){
+        $this->layout = false;
+        return $this->render('index', []);
+    }*/
 
 }

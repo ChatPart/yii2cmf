@@ -154,7 +154,7 @@ frontend\themes\riem\assets\AdminLteAsset::register($this);
                     <div class="row">
                         <a class="col-sm-7 normal" href="<?= Yii::$app->homeUrl ?>"
                            style=" padding: 25px 0;display: inline-block;">
-                            <img class="banner-logo" style="width: 100%;" src="<?= Url::to('@web/images/top.png') ?>" />
+                            <img class="banner-logo" style="width: 100%;" src="<?= Url::to('@web/riem/images/top.png') ?>" />
                         </a>
                         <div class="col-sm-5  normal">
                             <div class="row" style="margin-top: 1em;">

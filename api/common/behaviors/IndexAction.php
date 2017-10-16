@@ -20,6 +20,8 @@ class IndexAction extends Action
             call_user_func($this->checkAccess, $this->id);
         }
 
+
+
         return $this->prepareDataProvider();
     }
 
@@ -45,7 +47,7 @@ class IndexAction extends Action
         if($query == null){
             $query =[];
         }
-
+        //return $query;
         return Yii::createObject([
             'class' => ActiveDataProvider::className(),
             'query' => $modelClass::find()

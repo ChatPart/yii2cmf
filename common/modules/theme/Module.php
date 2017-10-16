@@ -35,7 +35,8 @@ class Module extends \common\modules\Module implements BootstrapInterface
                 //最后读系统默认
                 $isMobile = (new MobileDetect())->isMobile();
                 if ($isMobile) {
-                    $themeName = \Yii::$app->config->get('mobile_theme_name', 'basic');
+                    //$themeName = \Yii::$app->config->get('mobile_theme_name', 'basic');
+                    $themeName = \Yii::$app->config->get('mobile_theme_name', 'sie');
                 } else {
                     $themeName = \Yii::$app->config->get('theme_name', 'basic');
                 }

@@ -11,18 +11,21 @@ use Yii;
  * @property mixed $task_list_id
  * @property mixed $title
  * @property mixed $description
- * @property mixed $member
+ * @property array $members 成员们
  * @property mixed $begin_at
  * @property mixed $end_at
  * @property mixed $file
- * @property mixed $commit
- * @property mixed $cover
+ * @property mixed $commit 评论
+ * @property array $tags
+ * @property mixed $cover 封面
  * @property mixed $status
+ * @property mixed $type 类型
  * @property mixed $created_at
  * @property mixed $detail_list_id
  */
 class Task extends \yii\mongodb\ActiveRecord
 {
+    const  STATUS_delete = 2;
     /**
      * @inheritdoc
      */
@@ -31,6 +34,9 @@ class Task extends \yii\mongodb\ActiveRecord
         return ['oa', 'task'];
     }
 
+    /*public static function primaryKey(){
+        return '_id';
+    }*/
     /**
      * @inheritdoc
      */
@@ -41,7 +47,7 @@ class Task extends \yii\mongodb\ActiveRecord
             'task_list_id',
             'title',
             'description',
-            'member',//array
+            'members',//array
             'begin_at',
             'end_at',
             'file',
@@ -51,6 +57,8 @@ class Task extends \yii\mongodb\ActiveRecord
             'created_at',
             'detail_list_id',//array
             'sequence',
+            'tags',
+            'type',
         ];
     }
 
@@ -60,7 +68,8 @@ class Task extends \yii\mongodb\ActiveRecord
     public function rules()
     {
         return [
-            [['task_list_id', 'title', 'description', 'member', 'begin_at', 'end_at', 'file', 'commit', 'cover', 'status', 'created_at', 'detail_list_id','sequence'], 'safe'],
+            [['task_list_id', 'title', 'description', 'members', 'begin_at', 'end_at', 'file', 'commit', 'cover', 'status','type','tags', 'created_at', 'detail_list_id','sequence'], 'safe'],
+            //[['task_list_id', 'title', 'member', 'begin_at', 'end_at', 'file', 'commit', 'cover', 'status', 'created_at', 'detail_list_id','sequence'], 'safe'],
             [['status', 'sequence'],'integer'],
             [['begin_at', 'end_at','created_at'],'integer'],
         ];
@@ -87,4 +96,15 @@ class Task extends \yii\mongodb\ActiveRecord
             'detail_list_id' => 'Detail List ID',
         ];
     }
+
+    /*public function delete()
+    {
+        $result = false;
+        if ($this->beforeDelete()) {
+            $result = $this->deleteInternal();
+            $this->afterDelete();
+        }
+
+        return $result;
+    }*/
 }

@@ -31,7 +31,7 @@ use yii\helpers\Url;
                         <?= $m->title ?>
                     </a>
                     <span class="text-muted pull-right"
-                          style="font-size: 13px"><?= Yii::$app->formatter->asDate($m->created_at, 'MM/dd') ?></span>
+                          style="font-size: 13px"><?= Yii::$app->formatter->asDate($m->published_at, 'MM/dd') ?></span>
 
                 </li>
             <?php endforeach; ?>

@@ -20,33 +20,37 @@ use yii\data\ArrayDataProvider;
 
 class MaxController extends Controller
 {
-    /**
-     * @api {post} /v1/auth/login 登录
-     * @apiVersion 1.0.0
-     * @apiName login
-     * @apiGroup Auth
-     *
-     * @apiParam {String} username 用户名/邮箱
-     * @apiParam {String} password  密码
-     *
+
+    /** 当前看板下所有任务列表，及其所有任务
+     * @param $id
+     * @return ArrayDataProvider
      */
     public function actionBoard($id)
     {
         $board = Board::findOne($id);
         $task_lists = TaskList::find()->where(['board_id'=>$id])->asArray()->all();
 
-
-
+        $tasks=[];
         foreach ($task_lists as $k =>$taskList){
-            //$data['task_list'][] = $taskList;
-            $task_lists[$k]['task'] = @Task::find()
-                ->where(['task_list_id'=>(string)$taskList['_id']])->asArray()
+            $task_lists[$k]['_id'] = (string)$task_lists[$k]['_id'];
+
+            $cur_tasks = @Task::find()
+                ->where(['task_list_id'=>(string)$taskList['_id']])
                 ->all();
+
+            //$cur_tasks['task_list_id'] = (string)$taskList['_id'];
+
+
+            foreach ($cur_tasks as $task){
+                $task_lists[$k]['task'][] = (string)$task['_id'];
+            }
+            $tasks[(string)$taskList['_id']] = $cur_tasks;
+
         }
 
         $data['board'] = $board;
         $data['task_list'] = $task_lists;
-        //$data['tasks'] = $tasks;
+        $data['tasks'] = $tasks;
 
         $provider = new ArrayDataProvider([
             'allModels' => $data,
@@ -57,26 +61,53 @@ class MaxController extends Controller
                 'attributes' => ['created_at'],
             ],
         ]);
-        //var_dump($provider);
 
         return $provider;
     }
 
-    public function  actionCc()
+    /** 任务列表下所有任务
+     * @param $task_list_id
+     * @return ActiveDataProvider
+     */
+    public function  actionTasks($task_list_id)
     {
+        $query = Task::find()
+            ->andFilterWhere(['task_list_id' => $task_list_id]);
 
-        $data = Task::find()
-            ->where(['task_list_id'=>'5994511e0109b8364b6061d1'])->asArray()
-            ->all();
-        $provider = new ArrayDataProvider([
-            'allModels' => $data,
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    '_id' => SORT_DESC
+                ]
+            ],
             'pagination' => [
                 'pageSize' => 10,
             ],
+        ]);
+        return $dataProvider;
+    }
+
+    /** 任务列表下所有任务
+     * @param $task_list_id
+     * @return ActiveDataProvider
+     */
+    public function  actionEvents($event_list_id)
+    {
+        $query = Task::find()
+            ->andFilterWhere(['task_list_id' => $event_list_id]);
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
             'sort' => [
-                'attributes' => ['created_at'],
+                'defaultOrder' => [
+                    '_id' => SORT_DESC
+                ]
+            ],
+            'pagination' => [
+                'pageSize' => 10,
             ],
         ]);
-        return $provider;
+        return $dataProvider;
     }
 }

@@ -10,6 +10,7 @@ namespace api\modules\v1\controllers;
 
 
 use api\common\controllers\Controller;
+use api\common\models\User;
 use yii\filters\auth\QueryParamAuth;
 use yii\helpers\ArrayHelper;
 
@@ -27,7 +28,19 @@ class UserController extends Controller
 
     public function actionInfo()
     {
+
         $user = \Yii::$app->user->identity;
+
         return $user;
+    }
+
+    public function actionStaffInfo()
+    {
+        $user = \Yii::$app->user->identity->profile;
+        return $user;
+    }
+
+    public function actionBase($id){
+        return User::findOne(['id'=>$id]);
     }
 }

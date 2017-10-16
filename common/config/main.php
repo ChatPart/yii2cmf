@@ -5,6 +5,8 @@ return [
     'runtimePath' => '@app/runtime',
     'timezone' => 'PRC',
     'language' => 'zh-CN',
+    /*'sourceLanguage' => 'zh-CN',
+    'language' => 'en-US',*/
     'bootstrap' => [
         'log',
         'common\\components\\LoadModule',

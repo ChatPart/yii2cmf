@@ -24,15 +24,17 @@ if (isset($category)) {
             <div class="col-lg-8">
                 <div class="box box-widget">
                     <div class="box-header with-border">
-                        <h4 class="box-title">新闻中心</h4>
+                        <h4 class="box-title"><?= $this->title ?></h4>
                         <div class="box-tools pull-right">
 
                         </div>
                     </div>
-                    <div class="box-body box-profile">
+                    <div class="box-body box-profile block-list">
                         <?php foreach ($dataProvider->getModels() as $m): ?>
                         <div class="attachment-block ">
-                            <img class="attachment-img" src="<?=$m->cover?>" alt="Attachment Image">
+                            <?php if(!empty($m->cover)){ ?>
+                            <img class="attachment-img" src="<?=$m->cover?>" alt="">
+                            <?php } ?>
                             <div class="attachment-pushed">
                                 <h4 class="attachment-heading listpic-text" style="font-size: 15px; height: 22px;white-space: nowrap;
 text-overflow: ellipsis;">
@@ -48,11 +50,7 @@ text-overflow: ellipsis;">
                         <?php endforeach; ?>
                     </div>
                     <div class="box-footer text-center">
-                        <?php if (!(new \Detection\MobileDetect())->isMobile()): ?>
-                            <?= \yii\widgets\LinkPager::widget([
-                                'pagination' => $dataProvider->pagination
-                            ]); ?>
-                        <?php else: ?>
+
                             <?= \yii\widgets\LinkPager::widget([
                                 'pagination' => $dataProvider->pagination,
                                 'nextPageLabel' => '下一页',
@@ -62,7 +60,7 @@ text-overflow: ellipsis;">
                                 'nextPageCssClass' => 'next',
                                 'options' => ['class' => 'pager'],
                             ]); ?>
-                        <?php endif; ?>
+
                     </div>
 
                 </div>

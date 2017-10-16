@@ -27,7 +27,7 @@
   border-right: 1px solid #3a87f6;;
 }
 .navbar-toggle {
-  color: #399BFF;
+  color: #FFF;
 }
 .skin-pblue-light .main-header #navbar-search-input.form-control {
   /*background: rgba(255, 255, 255, 0.2);*/
@@ -44,7 +44,7 @@
   background: url('../../img/4.jpg');
 }*/
 .main-header .navbar-brand {
-  color: #399BFF;
+  color: #f2fcff;
 }
 /*.skin-blue .main-header .navbar {
   background-color: #ffffff;

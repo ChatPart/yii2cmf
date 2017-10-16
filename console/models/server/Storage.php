@@ -1,20 +1,24 @@
 <?php
 namespace console\models\server;
-
-class Storage
+use yii\redis\Connection;
+class Storage extends \yii\base\Component
 {
     /**
      * @var \redis
      */
     protected $redis;
 
-    const PREFIX = 'webim';
+    const PREFIX = 'eo';
 
-    function __construct($config)
+    function __construct()
     {
-        $this->redis = \Swoole::getInstance()->redis;
-        $this->redis->delete(self::PREFIX.':online');
-        $this->config = $config;
+        $this->redis = \Yii::$app->redis;
+        //$redis->get('key');
+        //$redis->set('k','v');
+        //$this->redis = \Swoole::getInstance()->redis;
+        $this->redis->del(self::PREFIX.':online');
+        //$this->redis->set('xq','xqqqqqqqqqqqqq');
+        //$this->config = $config;
     }
 
     function login($client_id, $info)

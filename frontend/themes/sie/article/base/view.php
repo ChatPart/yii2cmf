@@ -31,11 +31,11 @@ list($this->title, $this->params['SEO_SITE_KEYWORDS'], $this->params['SEO_SITE_D
                         <div class="box-header with-border">
                             <h3 class="title"><?= $model->title ?></h3>
                             <div class="author clearfix author-right">
-                                <span class="name" style="margin-right: 1em;"><?= Html::icon('clock-o')?> <?= date('Y-m-d', $model->created_at) ?></span>
+                                <span class="name" style="margin-right: 1em;"><?= Html::icon('clock-o')?> <?= date('Y-m-d', $model->published_at) ?></span>
                                 <span class="from"><?= Html::icon('eye')?> <?= $model->trueView?>次浏览</span>
                             </div>
                         </div>
-                        <div class="box-body text-center">
+                        <div class="box-body ">
                             <?= \yii\helpers\HtmlPurifier::process($model->data->processedContent) ?>
                         </div>
                     </div>

@@ -16,6 +16,7 @@ use Yii;
  */
 class TaskList extends \yii\mongodb\ActiveRecord
 {
+    const  STATUS_delete = 2;
     /**
      * @inheritdoc
      */

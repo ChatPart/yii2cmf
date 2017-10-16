@@ -84,4 +84,16 @@ return [
     'created error.{0}' => '创建失败.{0}',
     'updated error.{0}' => '更新失败.{0}',
     '中文' => 'English',
+    'Apply Now' => '在线申请',
+    'English'=>'中文',
+    //'English'=>'中文',
+    '在线申请'=>'Apply Now',
+    //'在线申请'=>'Apply Now',
+    'http://iso.swjtu.edu.cn/index.php?l=en'=>'http://iso.swjtu.edu.cn/',
+    'http://sie.swjtu.edu.cn/en/'=>'http://sie.swjtu.edu.cn/',
+    '更多'=>'more',
+    '电话'=>'Tel',
+    '邮编'=>'PC',
+    '地址：四川省峨眉山市景区路1号'=>'Add.: No.1 Jingqu Road, Emeishan, Sichuan, P. R. China',
+    '首页'=>'Home'
 ];
