@@ -32,7 +32,7 @@ class Page extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['content', 'title', 'slug'], 'required'],
+            [['title', 'slug'], 'required'],
             [['content'], 'string'],
             ['markdown', 'default', 'value' => $this->getIsMarkdown()],
             [['use_layout'], 'in', 'range' => [0, 1]],

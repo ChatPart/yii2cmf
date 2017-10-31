@@ -4,52 +4,41 @@ namespace api\common\behaviors;
 
 use Yii;
 use yii\rest\Action;
-use yii\data\ActiveDataProvider;
+use yii\base\Model;
+use yii\db\ActiveRecord;
+use yii\web\ServerErrorHttpException;
 
 class UpdateAction extends Action
 {
-    public $prepareDataProvider;
+    /**
+     * @var string the scenario to be assigned to the model before it is validated and updated.
+     */
+    public $scenario = Model::SCENARIO_DEFAULT;
 
 
     /**
-     * @return ActiveDataProvider
+     * Updates an existing model.
+     * @param string $id the primary key of the model.
+     * @return \yii\db\ActiveRecordInterface the model being updated
+     * @throws ServerErrorHttpException if there is any error when updating the model
      */
-    public function run()
+    public function run($id)
     {
+        /* @var $model ActiveRecord */
+        $model = $this->findModel($id);
+
         if ($this->checkAccess) {
-            call_user_func($this->checkAccess, $this->id);
+            call_user_func($this->checkAccess, $this->id, $model);
         }
 
-        return $this->prepareDataProvider();
-    }
+        $model->scenario = $this->scenario;
+        //var_dump(Yii::$app->request->post());die();
+        $model->load(Yii::$app->request->post(), '');
 
-    /**
-     * Prepares the data provider that should return the requested collection of the models.
-     * @return ActiveDataProvider
-     */
-    protected function prepareDataProvider()
-    {
-        if ($this->prepareDataProvider !== null) {
-            return call_user_func($this->prepareDataProvider, $this);
+        if ($model->save() === false && !$model->hasErrors()) {
+            throw new ServerErrorHttpException('Failed to update the object for unknown reason.');
         }
 
-        /* @var $modelClass \yii\db\BaseActiveRecord */
-        $modelClass = $this->modelClass;
-
-        //$query = json_decode(Yii::$app->request->get('query'),true);
-
-        /*foreach($query as $k=>$v){
-            $query[$k] = json_decode($v,ture);
-        }*/
-
-        /*if($query == null){
-            $query =[];
-        }*/
-
-        return Yii::createObject([
-            'class' => ActiveDataProvider::className(),
-            'query' => $modelClass::find()
-                ->andFilterWhere(['_id'=>'5991524c9022a109ed7d6653']),
-        ]);
+        return $model;
     }
 }

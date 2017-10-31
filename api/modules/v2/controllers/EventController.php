@@ -9,12 +9,26 @@ use yii\rest\ActiveController;
 class EventController extends ActiveController
 {
     public $modelClass = 'common\modules\team\models\Task';
-
+    protected function verbs()
+    {
+        return [
+            'index' => ['GET', 'HEAD'],
+            'view' => ['GET', 'HEAD'],
+            'create' => ['POST'],
+            'update' => ['POST'],
+            'delete' => ['DELETE'],
+        ];
+    }
     public function actions()
     {
         $actions = parent::actions();
         $actions['index']=[
             'class' => 'api\common\behaviors\IndexAction',
+            'modelClass' => $this->modelClass,
+            'checkAccess' => [$this, 'checkAccess'],
+        ];
+        $actions['update']=[
+            'class' => 'api\common\behaviors\UpdateAction',
             'modelClass' => $this->modelClass,
             'checkAccess' => [$this, 'checkAccess'],
         ];

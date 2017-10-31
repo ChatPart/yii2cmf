@@ -38,7 +38,7 @@ list($this->title, $this->params['SEO_SITE_KEYWORDS'], $this->params['SEO_SITE_D
                         <?php if ($next != null): ?>
                             <li class="next"><a href="<?= Url::to(['view', 'id' => $next->id]) ?>">下一篇 &rarr;</a></li>
                         <?php else: ?>
-                            <li class="next"><a href="javascript:;">已经是最后一篇 &rarr;</a></li>
+                            <li class="next"><a href="javascript:;"><?= Yii::t('common',已经是最后一篇)?> &rarr;</a></li>
                         <?php endif; ?>
                     </ul>
                 </nav>

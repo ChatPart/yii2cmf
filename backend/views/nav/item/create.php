@@ -8,7 +8,7 @@ $this->title = Yii::t('backend', 'Create {modelClass}', [
     'modelClass' => 'Nav Item',
 ]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Nav Items'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $nav->key, 'url' => ['update', 'id' => $nav->id]];
+$this->params['breadcrumbs'][] = ['label' => $nav->key, 'url' => ['nav/update', 'id' => $nav->id]];
 $this->params['breadcrumbs'][] = Yii::t('backend', 'Create');
 ?>
 <div class="widget-Nav-item-create">

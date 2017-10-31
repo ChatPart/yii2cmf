@@ -36,6 +36,7 @@ class TaskList extends \yii\mongodb\ActiveRecord
             'board_id',
             'sequence',
             'status',
+            'created_by',
             'created_at',
             'updated_at',
             'tasks',

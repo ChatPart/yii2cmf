@@ -4,6 +4,7 @@ namespace common\models;
 
 use common\behaviors\PositionBehavior;
 use Yii;
+use common\modules\attachment\behaviors\UploadBehavior;
 
 /**
  * This is the model class for table "{{%nav_item}}".
@@ -23,6 +24,7 @@ class NavItem extends \yii\db\ActiveRecord
         return '{{%nav_item}}';
     }
 
+    public $linkOptions;
     /**
      * @inheritdoc
      */
@@ -33,6 +35,7 @@ class NavItem extends \yii\db\ActiveRecord
             [['status', 'nav_id', 'order', 'target','pid'], 'integer'],
             ['pid', 'default', 'value' => 0],
             [['title', 'url'], 'string', 'max' => 128],
+            ['cover', 'safe']
         ];
     }
 
@@ -49,6 +52,7 @@ class NavItem extends \yii\db\ActiveRecord
             'target' => '是否新窗口打开',
             'status' => Yii::t('common', 'Status'),
             'order' => Yii::t('common', 'Order'),
+            'cover' => Yii::t('common', '图标'),
         ];
     }
 
@@ -68,6 +72,11 @@ class NavItem extends \yii\db\ActiveRecord
                 'groupAttributes' => [
                     'nav_id'
                 ],
+            ],
+            [
+                'class' => UploadBehavior::className(),
+                'attribute' => 'cover',
+                'entity' => __CLASS__
             ],
         ];
     }

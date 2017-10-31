@@ -33,6 +33,7 @@ class Teacherdoc extends \yii\db\ActiveRecord
         return [
             [['id', 'doc'], 'required'],
             //['doc', 'safe'],
+            ['content', 'string'],
             [['id'], 'integer'],
         ];
     }
@@ -45,6 +46,7 @@ class Teacherdoc extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'doc' => '文件',
+            'content' => '描述',
         ];
     }
 
@@ -62,7 +64,12 @@ class Teacherdoc extends \yii\db\ActiveRecord
                         'type' => 'file',
                         'options' => ['widgetOptions' => ['onlyUrl' => false]]
                     ],
-
+                    'content' => [
+                        'type' => 'editor',
+                        /*'options' => function ($model) {
+                            return ['widgetOptions' => $model->isNewRecord ? ['type' => config('article_editor_type')] : ['isMarkdown' => $model->markdown]];
+                        }*/
+                    ],
                 ]
             ]
         ];

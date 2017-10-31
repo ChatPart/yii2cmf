@@ -6,6 +6,8 @@ use common\models\AdminLog;
 use common\models\Article;
 use common\models\article\Base;
 use common\models\Category;
+use common\modules\attachment\models\Attachment;
+use common\modules\attachment\models\AttachmentIndex;
 use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -24,7 +26,7 @@ class ToolController extends Controller
      */
     public function actionIndex()
     {
-        $posts = \Yii::$app->db->createCommand('SELECT * FROM cate WHERE pre_cate = 52')
+        $posts = \Yii::$app->db->createCommand('SELECT * FROM cate WHERE pre_cate > 4 and  pre_cate <> 0 and')
             ->queryAll();
 
 //        [['pid', 'sort', 'allow_publish'], 'integer'],
@@ -78,10 +80,9 @@ class ToolController extends Controller
 
             $documents = \Yii::$app->db->createCommand('SELECT * FROM document WHERE cate ='.$cate['id'])
                 ->queryAll();
+            $category = Category::findOne(['title'=>$cate['name']]);
 
             foreach ($documents as $document){
-
-                $category = Category::findOne(['title'=>$cate['name']]);
 
                 if(empty($category)){
                     $category_id = 20;
@@ -98,9 +99,37 @@ class ToolController extends Controller
                 $article->module = 'base';
                 $article->description = $document['breviary'];
 
-                if($article->save()){
+                $classname = Article::className();
 
-                    echo $i++;
+                if($article->save()){
+//*********图片 ×××××××××*******/
+                    if(!empty($document['pic'])){
+                        $a = explode('.',$document['pic']);
+                        $b = explode($a[0],'/');
+
+                        $attachment = new Attachment();
+                        $attachment->path = $a[0];
+                        $attachment->name = $b[count($b)-1].$a[1];
+                        $attachment->extension = $a[1];
+                        $attachment->type = 'image/'.$a[1];
+                        $attachment->size = 1;
+                        $attachment->hash = $b[count($b)-1];
+                        if($attachment->save()){
+                            //$attachment = Attachment::uploadFromUrl('','http://10.8.100.55/'.$document['pic'])[0];
+                            $ai = new AttachmentIndex();
+                            $ai->attachment_id = $attachment->id;
+                            $ai->entity_id = $article->id;
+                            $ai->attribute = 'cover';
+                            $ai->entity = $classname;
+                            $ai->save();
+                        }
+
+                    }
+
+
+
+
+                    echo $i++; //统计分类文章数量
                     echo $cate['name'].':';
                     echo $article->title;
                     echo '<br>';
@@ -125,16 +154,30 @@ class ToolController extends Controller
                     echo '<br>';
                 }
 
-
-
-
-
                 //$article->category_id = $document['title'];
             }
 
         }
 
     }
+
+    //public function actionTestA()
+
+    public function actionAttachment(){
+
+
+        $re = Attachment::uploadFromUrl('','http://10.8.100.55/images/upload/20170614/1497420748393603.png');
+        //$attachment = Attachment::uploadFromUrl('','http://10.8.100.55/'.$document['pic'])[0];
+        var_dump($re->errors);die();
+        $ai = new AttachmentIndex();
+        $ai->attachment_id = $re->id;
+        $ai->entity_id = 1;
+        $ai->attribute = 'cover';
+        $ai->entity = Article::className();
+        $ai->save();
+
+    }
+
 
     /**
      * Displays a single AdminLog model.

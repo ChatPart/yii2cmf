@@ -67,6 +67,28 @@ class Nav extends \yii\db\ActiveRecord
             return $value;
         }, $items);
     }
+/*
+ * 获取NavItem对象
+ */
+    public static function getNavItems($key)
+    {
+        $nav = self::find()->where(['key' => $key])->one();
+        if ($nav == null) {
+            return [];
+        }
+        $items = NavItem::find()
+            ->where(['nav_id' => $nav->id, 'status' => 1])
+            ->orderBy(['order' => SORT_ASC])
+            ->all();
+
+        return array_map(function($value){
+            $value->url = Util::parseUrl($value->url);
+            if ($value->target == 1) {
+                $value->linkOptions = ['target' => '_blank'];
+            }
+            return $value;
+        }, $items);
+    }
 
     public static function getTreeItems($key)
     {

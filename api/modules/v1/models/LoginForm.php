@@ -68,7 +68,7 @@ class LoginForm extends Model
     public function login()
     {
         if ($this->validate()) {
-            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
+            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 15 : 0);
         } else {
             return false;
         }
@@ -78,7 +78,7 @@ class LoginForm extends Model
     {
         if ($this->validate()) {
             if ($this->getUser()->getIsAdmin()) {
-                return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
+                return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 15 : 0);
             } else {
                 $this->addError('username', '无权登录');
                 return false;

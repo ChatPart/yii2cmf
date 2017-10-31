@@ -2,6 +2,7 @@
 
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
+use common\modules\attachment\widgets\SingleWidget;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\NavItem */
@@ -19,6 +20,7 @@ use yii\helpers\Html;
             <?= $form->field($model, 'target')->checkbox() ?>
 
             <?= $form->field($model, 'status')->checkbox() ?>
+    <?= $form->field($model, 'cover')->widget(SingleWidget::className()) ?>
 
             <div class="form-group">
                 <?= Html::submitButton($model->isNewRecord ? Yii::t('backend', 'Create') : Yii::t('backend', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

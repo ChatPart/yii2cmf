@@ -18,7 +18,9 @@ class TaskSearch extends Task
     public function rules()
     {
         return [
-            [['_id', 'task_list_id', 'title', 'description', 'member', 'begin_at', 'end_at', 'file', 'commit', 'cover', 'status', 'created_at', 'detail_list_id', 'sequence'], 'safe'],
+            [['_id','task_list_id', 'title','created_by', 'description', 'members', 'begin_at', 'end_at', 'file', 'commit', 'cover', 'status','type','tags', 'created_at', 'detail_list_id','sequence'], 'safe'],
+
+            //[['_id', 'task_list_id', 'title', 'description', 'member', 'begin_at', 'end_at', 'file', 'commit', 'cover', 'status', 'created_at', 'detail_list_id', 'sequence'], 'safe'],
         ];
     }
 
@@ -61,7 +63,7 @@ class TaskSearch extends Task
             ->andFilterWhere(['like', 'task_list_id', $this->task_list_id])
             ->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'member', $this->member])
+            ->andFilterWhere(['like', 'members', $this->members])
             ->andFilterWhere(['like', 'begin_at', $this->begin_at])
             ->andFilterWhere(['like', 'end_at', $this->end_at])
             ->andFilterWhere(['like', 'file', $this->file])

@@ -30,6 +30,9 @@
 }
 .skin-pblue-light .content-wrapper, .right-side {
   background-color: #f5f7f9;
+  background-image: url(/riem/images/indexbg.jpg);
+  background-repeat: no-repeat;
+  background-position-y: 580px;
 }
 .skin-pblue-light .index-box-header {
   background-color: #ecedef;
@@ -124,7 +127,7 @@
   min-height: 14px;
   border-bottom: none;
   /* border-bottom: 1px solid #eee; */
-  background-color: #135a88;
+  background-color: #0b5da5;;
 }
 .main-header .navbar-brand {
   color: #399BFF;
@@ -314,6 +317,7 @@
 .skin-pblue-light .main-sidebar,
 .skin-pblue-light .left-side {
   background-color: rgba(203, 210, 222, 0.55);
+  /*background-image: url(/riem/images/indexbg.jpg);*/
 }
 .skin-pblue-light .report-title a{
   color: #06517c;

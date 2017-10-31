@@ -12,6 +12,7 @@ use Yii;
  * @property mixed $cover_img
  * @property mixed $tag
  * @property mixed $discription
+ * @property integer $created_by
  */
 class Board extends \yii\mongodb\ActiveRecord
 {
@@ -35,6 +36,8 @@ class Board extends \yii\mongodb\ActiveRecord
             'tag',
             'sequence',
             'discription',
+            'created_by',
+            'created_at',
         ];
     }
 
@@ -44,8 +47,8 @@ class Board extends \yii\mongodb\ActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios[self::SCENARIO_CREATE] = ['name', 'cover_img', 'tag', 'sequence', 'discription'];
-        $scenarios[self::SCENARIO_UPDATE] = ['name', 'cover_img', 'tag', 'sequence', 'discription'];
+        $scenarios[self::SCENARIO_CREATE] = ['name', 'cover_img', 'tag', 'sequence', 'discription','created_by'];
+        $scenarios[self::SCENARIO_UPDATE] = ['name', 'cover_img', 'tag', 'sequence', 'discription','created_by'];
         return $scenarios;
     }
 
@@ -55,7 +58,7 @@ class Board extends \yii\mongodb\ActiveRecord
     public function rules()
     {
         return [
-            [['_id','name', 'cover_img', 'tag','sequence', 'discription'], 'safe'],
+            [['_id','name', 'cover_img', 'tag','sequence', 'discription','created_by','created_at'], 'safe'],
             //['id', 'targetAttribute' => '_id',],
         ];
     }

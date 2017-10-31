@@ -24,4 +24,18 @@ class PageController extends Controller
             'page' => $page,
         ]);
     }
+
+    public function actionIndex($slug)
+    {
+        $page = Page::find()->where(['slug' => $slug])->one();
+        if (empty($page)) {
+            throw new NotFoundHttpException('页面不存在');
+        }
+        $this->layout = $page->use_layout ? 'main' : false;
+
+        return $this->render($slug, [
+            'page' => $page,
+        ]);
+    }
+
 }

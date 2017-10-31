@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description') ?>
 
-    <?= $form->field($model, 'member') ?>
+    <?= $form->field($model, 'members') ?>
 
     <?= $form->field($model, 'begin_at') ?>
 
@@ -33,6 +33,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'status') ?>
 
     <?= $form->field($model, 'created_at') ?>
+    <?= $form->field($model, 'created_by') ?>
 
     <?= $form->field($model, 'detail_list_id') ?>
 

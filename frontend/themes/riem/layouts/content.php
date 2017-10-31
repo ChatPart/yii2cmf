@@ -46,8 +46,7 @@ use common\models\Cate;
                     <div class="footer-content">
                         <div class="text-center">
                             <a class="" href="http://www.swufe.edu.cn/">
-                                <img src="/images/top.jpg" style="padding-top: 21px;height: 99px;" class="img-responsive bottom-img"
-                                     alt="swufe">
+                                <img src="/images/top.jpg" style="padding-top: 21px;height: 99px;" class="img-responsive bottom-img" alt="swufe">
                             </a>
                         </div>
                     </div>

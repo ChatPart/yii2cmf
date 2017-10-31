@@ -6,6 +6,7 @@
  */
 namespace frontend\controllers;
 
+use backend\models\search\ArticleSearch;
 use common\models\Category;
 use common\models\Comment;
 use frontend\models\Article;
@@ -70,6 +71,57 @@ class ArticleController extends Controller
         ]);*/
     }
 
+
+    public function actionCatelist($cate = null)
+    {
+        $query = Article::find()->published();
+        $category = null;
+        if (!empty($cate)) {
+            $category = Category::findByIdOrSlug($cate);
+            if (empty($category)) {
+                throw new NotFoundHttpException('分类不存在');
+            }
+            $query = $query->andFilterWhere(['category_id' => $category->id]);
+
+            $categorys = Category::findAll(['pid'=>$category->pid]);
+        }
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort' => [
+                'defaultOrder' => [
+                    'published_at' => SORT_DESC
+                ],
+                'attributes' => [
+                    'published_at',
+                    'view'
+                ]
+            ]
+        ]);
+        // 热门标签
+        $hotTags = Tag::hot();
+
+        try{
+            return $this->render($cate.'/catelist', [
+                'dataProvider' => $dataProvider,
+                'category' => $category,
+                'hotTags' => $hotTags,
+                'categorys' => $categorys
+            ]);
+        }catch (\yii\base\InvalidParamException $e){
+            return $this->render('catelist', [
+                'dataProvider' => $dataProvider,
+                'category' => $category,
+                'hotTags' => $hotTags,
+                'categorys' => $categorys
+            ]);
+        }
+        /*return $this->render('index', [
+            'dataProvider' => $dataProvider,
+            'category' => $category,
+            'hotTags' => $hotTags
+        ]);*/
+    }
     /**
      * 标签文章列表
      */
@@ -122,6 +174,22 @@ class ArticleController extends Controller
             'hots' => $hots,
             'next' => $next,
             'prev' => $prev
+        ]);
+    }
+
+    public function actionShow($category)
+    {
+        $searchModel = new ArticleSearch(['module'=>'teacherdoc']);
+        //$dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+        //var_dump(\Yii::$app->request->queryParams);die();
+
+        $dataProvider = $searchModel->search(['ArticleSearch'=>['category_id'=>$category]]);
+
+        $theCategory = Category::findOne(['id'=>$category]);
+        return $this->render('teacherdoc/show', [
+            'theCategory'=>$theCategory,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 }

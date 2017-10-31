@@ -21,6 +21,7 @@ use Yii;
  * @property mixed $status
  * @property mixed $type 类型
  * @property mixed $created_at
+ * @property int $created_by
  * @property mixed $detail_list_id
  */
 class Task extends \yii\mongodb\ActiveRecord
@@ -45,6 +46,8 @@ class Task extends \yii\mongodb\ActiveRecord
         return [
             '_id',
             'task_list_id',
+            'created_by',
+            //'user_id',
             'title',
             'description',
             'members',//array
@@ -68,10 +71,9 @@ class Task extends \yii\mongodb\ActiveRecord
     public function rules()
     {
         return [
-            [['task_list_id', 'title', 'description', 'members', 'begin_at', 'end_at', 'file', 'commit', 'cover', 'status','type','tags', 'created_at', 'detail_list_id','sequence'], 'safe'],
-            //[['task_list_id', 'title', 'member', 'begin_at', 'end_at', 'file', 'commit', 'cover', 'status', 'created_at', 'detail_list_id','sequence'], 'safe'],
-            [['status', 'sequence'],'integer'],
-            [['begin_at', 'end_at','created_at'],'integer'],
+            [['task_list_id', 'title','description','created_by', 'members', 'begin_at', 'end_at', 'file', 'commit', 'cover', 'status','type','tags', 'created_at', 'detail_list_id','sequence'], 'safe'],
+            [['status', 'sequence','tags','created_by','begin_at', 'end_at','created_at'],'integer'],
+            //[[],'integer'],
         ];
     }
 
@@ -85,7 +87,7 @@ class Task extends \yii\mongodb\ActiveRecord
             'task_list_id' => 'Task List ID',
             'title' => 'Title',
             'description' => 'Description',
-            'member' => 'Member',
+            'members' => 'Members',
             'begin_at' => 'Begin At',
             'end_at' => 'End At',
             'file' => 'File',

@@ -17,9 +17,10 @@ class Storage
         $this->config = $config;
     }
 
-    function login($client_id, $info)
+    function login($client_id,$info)
     {
         $this->redis->set(self::PREFIX . ':client:' . $client_id, json_encode($info));
+        //$this->redis->set(self::PREFIX . ':user:' . $user_id, $client_id);
         $this->redis->sAdd(self::PREFIX . ':online', $client_id);
     }
 

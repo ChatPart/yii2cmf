@@ -28,9 +28,7 @@ class UserController extends Controller
 
     public function actionInfo()
     {
-
         $user = \Yii::$app->user->identity;
-
         return $user;
     }
 

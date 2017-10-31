@@ -17,8 +17,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
-
             'id',
+            'title',
+            'slug',
             [
                 'attribute' => 'use_layout',
                 'value' => function ($model) {
@@ -26,9 +27,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $arr[$model->use_layout];
                 },
             ],
-            'title',
-            'slug',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

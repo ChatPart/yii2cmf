@@ -9,7 +9,16 @@ use yii\rest\ActiveController;
 class TaskController extends ActiveController
 {
     public $modelClass = 'common\modules\team\models\Task';
-
+    protected function verbs()
+    {
+        return [
+            'index' => ['GET', 'HEAD'],
+            'view' => ['GET', 'HEAD'],
+            'create' => ['POST'],
+            'update' => ['POST'],
+            'delete' => ['DELETE'],
+        ];
+    }
     public function actions()
     {
         $actions = parent::actions();
@@ -21,6 +30,9 @@ class TaskController extends ActiveController
         //unset($actions['index']);
         return $actions;
     }
+
+
+
     /*public $updateScenario = TaskList::SCENARIO_UPDATE;
 
     public $createScenario = TaskList::SCENARIO_CREATE;*/

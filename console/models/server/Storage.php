@@ -21,10 +21,11 @@ class Storage extends \yii\base\Component
         //$this->config = $config;
     }
 
-    function login($client_id, $info)
+    function login($user_id,$client_id)
     {
-        $this->redis->set(self::PREFIX . ':client:' . $client_id, json_encode($info));
-        $this->redis->sAdd(self::PREFIX . ':online', $client_id);
+        $this->redis->set(self::PREFIX . ':user:' . $user_id, $client_id);
+        //$this->redis->set(self::PREFIX . ':client:' . $client_id, json_encode($info));
+        //$this->redis->sAdd(self::PREFIX . ':online', $client_id);
     }
 
     function logout($client_id)
@@ -71,12 +72,12 @@ class Storage extends \yii\base\Component
      * @param $userid
      * @return bool|mixed
      */
-    function getUser($userid)
+    function getUser($user_id)
     {
-        $ret = $this->redis->get(self::PREFIX . ':client:' . $userid);
-        $info = json_decode($ret, true);
+        $client_id = $this->redis->get(self::PREFIX . ':user:' . $user_id);
+        //$client_id = json_decode($ret, true);
 
-        return $info;
+        return $client_id;
     }
 
     function exists($userid)
