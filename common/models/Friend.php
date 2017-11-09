@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\modules\user\models\User;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 
@@ -11,6 +12,7 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $owner_id
  * @property integer $friend_id
  * @property integer $status
+ * @property integer $type
  * @property integer $created_at
  * @property integer $updated_at
  */
@@ -31,7 +33,7 @@ class Friend extends \yii\db\ActiveRecord
     {
         return [
             [['owner_id', 'friend_id'], 'required'],
-            [['owner_id', 'friend_id'], 'integer'],
+            [['owner_id', 'friend_id','type','status'], 'integer'],
             [['owner_id', 'friend_id'], 'unique', 'targetAttribute' => ['owner_id', 'friend_id'], 'message' => 'The combination of Owner ID and Friend ID has already been taken.'],
         ];
     }
@@ -54,6 +56,14 @@ class Friend extends \yii\db\ActiveRecord
         return [
             TimestampBehavior::className()
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'friend_id']);
     }
 
     public static function getFansNumber($id = null)
@@ -80,6 +90,7 @@ class Friend extends \yii\db\ActiveRecord
         $model = self::find()->where(['owner_id' => Yii::$app->user->id, 'friend_id' => $id])->one();
         return $model !=null ;
     }
+
     public function follow($id)
     {
         if (Yii::$app->user->id == $id) {

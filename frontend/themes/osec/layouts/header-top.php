@@ -123,16 +123,15 @@ use backend\widgets\category\CategoryWidget;
                             </div>
                         <?php }else{ ?>
                             <div class="btn-group dropdown">
-                                <img src="<?= Url::to('@web'.Yii::$app->user->identity->getAvatar(32) )?>" class="user-image img-circle" style="display: inline-block"/>
+                                <img src="<?= Url::to(Yii::$app->user->identity->getAvatar(32) )?>" class="user-image img-circle" style="display: inline-block"/>
 
                                 <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
                                     <?= Yii::$app->user->identity->username ?>
-
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right dropdown-animation">
 
                                     <li><a href="<?= Url::toRoute('/dashboard/')?>">控制台 </a></li>
-                                    <li><a href="<?= Url::toRoute('/user/default/index',['id'=>2])?>">个人中心</a></li>
+                                    <li><a href="<?= Url::toRoute( ['/user/default/index', 'id' => Yii::$app->user->id])?>">个人中心</a></li>
                                     <li><a href="">设置 </a></li>
                                     <li><?= Html::a(
                                             '退出',

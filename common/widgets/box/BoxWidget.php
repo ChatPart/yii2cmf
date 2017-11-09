@@ -60,16 +60,15 @@ class BoxWidget extends Widget
             //echo 'hehhe';die();
             //$this->activeRecord = Cate::find()->where(['status'=>Cate::$STATUS_AOLLOW])->orderBy(['level' => SORT_DESC])->all();//new Room();//'Hello World';
         }
-        /*else{
+        else{
 
-            //$this->model = new ActiveRecord();
             $this->model = new $this->model($this->config);
             $this->activeRecord = $this->model
                 ->find()
                 ->where($this->where)
-                ->orderBy(array_merge($this->sort,['level' => SORT_DESC]))->limit($this->liNum)->all();
+                ->orderBy(array_merge($this->sort,['id' => SORT_DESC]))->limit($this->liNum)->all();
 
-        }*/
+        }
         //$room =
         $renderArray = [
             'category'=>$this->category,

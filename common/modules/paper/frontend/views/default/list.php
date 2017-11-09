@@ -85,27 +85,19 @@ $data = $dataProvider->getModels();
                         <div class="box-body table-responsive no-padding">
                             <table class="table table-hover table-tab">
                                 <tbody><tr >
-
                                     <th class="tab-th"># </th>
                                     <th class="tab-th">题目</th>
                                     <th class="tab-th">作者</th>
                                     <th class="tab-th">期刊</th>
-
-
                                 </tr>
                                 <?php foreach($data as $v){ ?>
                                     <tr>
-
                                         <td width=70><?= $v['year_id'] ?></td>
-
                                         <td><?= $v['title'] ?></td>
                                         <td><?= $v['author'] ?></td>
                                         <td><?= @$v['periodical'] ?>
                                             <br><?= @$v['serial_number'] ?>
                                         </td>
-
-
-
                                     </tr>
                                 <?php } ?>
 

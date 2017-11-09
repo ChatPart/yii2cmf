@@ -50,9 +50,9 @@ $this->params['breadcrumbs'][] = Html::encode($this->title);
                             <div class="block clearfix">
                                 <nav>
                                     <ul class="nav nav-pills nav-stacked font-15">
-                                        <li><a href="index.html">项目详情</a></li>
+                                        <li><a href="<?= Url::toRoute( ['/user/default/index', 'id' => Yii::$app->user->id])?>">项目详情</a></li>
                                         <li><a href="index.html">通知公告</a></li>
-                                        <li><a href="blog-right-sidebar.html">个人资料</a></li>
+                                        <li><a href="<?= Url::toRoute( ['/user/settings/profile', 'id' => Yii::$app->user->id])?>">个人资料</a></li>
                                         <li><a href="portfolio-3col.html">账号设定</a></li>
                                         <li><a href="page-about.html">About</a></li>
                                         <li><a href="page-contact.html">Contact</a></li>

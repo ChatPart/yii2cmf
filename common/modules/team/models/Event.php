@@ -21,9 +21,10 @@ use Yii;
  * @property mixed $status
  * @property mixed $type 类型
  * @property mixed $created_at
+ * @property int $created_by
  * @property mixed $detail_list_id
  */
-class TaskCheckin extends \yii\mongodb\ActiveRecord
+class Event extends \yii\mongodb\ActiveRecord
 {
     const  STATUS_delete = 2;
     /**
@@ -44,11 +45,23 @@ class TaskCheckin extends \yii\mongodb\ActiveRecord
     {
         return [
             '_id',
-            'task_id',
-            'longitude',//经度 121.59996
-            'latitude',//纬度 31.197646
-            'time',
+            'task_list_id',
+            'created_by',
+            //'user_id',
+            'title',
+            'description',
+            'members',//array
+            'begin_at',
+            'end_at',
+            'file',
+            'commit',
+            'cover',
             'status',
+            'created_at',
+            'detail_list_id',//array
+            'sequence',
+            'tags',
+            'type',
         ];
     }
 
@@ -58,10 +71,9 @@ class TaskCheckin extends \yii\mongodb\ActiveRecord
     public function rules()
     {
         return [
-            [['task_id', 'x','y', 'time', 'status'], 'safe'],
-            //[['task_list_id', 'title', 'member', 'begin_at', 'end_at', 'file', 'commit', 'cover', 'status', 'created_at', 'detail_list_id','sequence'], 'safe'],
-            /*[['status', 'sequence'],'integer'],
-            [['begin_at', 'end_at','created_at'],'integer'],*/
+            [['task_list_id', 'title','description','created_by', 'members', 'begin_at', 'end_at', 'file', 'commit', 'cover', 'status','type','tags', 'created_at', 'detail_list_id','sequence'], 'safe'],
+            [['status', 'sequence','tags','created_by','begin_at', 'end_at','created_at'],'integer'],
+            //[[],'integer'],
         ];
     }
 
@@ -75,7 +87,7 @@ class TaskCheckin extends \yii\mongodb\ActiveRecord
             'task_list_id' => 'Task List ID',
             'title' => 'Title',
             'description' => 'Description',
-            'member' => 'Member',
+            'members' => 'Members',
             'begin_at' => 'Begin At',
             'end_at' => 'End At',
             'file' => 'File',

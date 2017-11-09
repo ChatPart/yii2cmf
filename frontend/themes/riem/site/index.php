@@ -1,4 +1,5 @@
 <?php
+
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\helpers\Url;
@@ -52,10 +53,9 @@ position: relative;
                 'liNum' => 4,
                 //'pic' => true,
                 //'title' => ,
-                'url' => Url::toRoute(['document/list', 'cate' => 14]),
+                'url' => Url::toRoute(['article/index', 'cate' => 'news']),
                 'css' => ['warper' => 'box-widget index-box ', 'header' => 'with-border index-box-header', 'title' => 'index-box-title', 'icon' => 'index-box-icon bicon-news', 'body' => 'box-profile blue-border',],
             ]) ?>
-
 
 
         </div>
@@ -67,10 +67,10 @@ position: relative;
                 'sort' => [
                     'created_at' => SORT_DESC,
                 ],
-                'liNum' => 4,
+                'liNum' => 6,
                 //'pic' => true,
                 //'title' => ,
-                'url' => Url::toRoute(['document/list', 'cate' => 14]),
+                'url' => Url::toRoute(['article/index', 'cate' => 'macro_news']),
                 'css' => ['warper' => 'box-widget index-box ', 'header' => 'with-border index-box-header', 'title' => 'index-box-title', 'icon' => 'index-box-icon bicon-news', 'body' => 'box-profile blue-border',],
             ]) ?>
             <?php /*= common\widgets\box\BoxWidget::widget([
@@ -84,44 +84,67 @@ position: relative;
     <div class="row" style="margin-bottom: 23px">
         <div class="col-md-6">
             <a href="http://chfs.swufe.edu.cn/" target="_blank">
-                <img style="width: 100%" src="<?=Url::to('@web/images/portfolio/广告a(1).jpg') ?>">
+                <img style="width: 100%" src="<?= Url::to('@web/images/portfolio/广告a(1).jpg') ?>">
             </a>
         </div>
-        <div class="col-md-6"><img style="width: 100%" src="<?=Url::to('@web/images/portfolio/广告b(1).jpg') ?>"></div>
+        <div class="col-md-6"><img style="width: 100%" src="<?= Url::to('@web/images/portfolio/广告b(1).jpg') ?>"></div>
     </div>
     <div class="row" style="margin-bottom: 25px;">
         <div class="col-md-8" style="    height: 506px;">
-            <?= common\widgets\box\BoxWidget::widget([
-                'category' => Category::findOne(['slug' => 'news']),
-                'type' => 'listPic_m',
-                //'cate' => 14,
-                'sort' => [
-                    'created_at' => SORT_DESC,
-                ],
-                'liNum' => 4,
-                //'pic' => true,
-                //'title' => ,
-                'url' => Url::toRoute(['document/list', 'cate' => 14]),
-                'css' => ['warper' => 'box-widget index-box ', 'header' => 'with-border index-box-header', 'title' => 'index-box-title', 'icon' => 'index-box-icon bicon-news', 'body' => 'box-profile blue-border',],
-            ]) ?>
-            <?php
-            /*$achieve = new \frontend\models\Achievement();
 
-            echo common\widgets\box\BoxWidget::widget([
-                'model' => $achieve,
-                'type' => 'achievement-list', 'cate' => 67, 'title' => Yii::t('common', 'Research'), 'liNum' => 7,
-                //'type' => 'achievement-list', 'cate' => 67, 'title' => Yii::t('common', '科研成果'), 'liNum' => 7,
-                'where' => ['cate'=>'97'],
-                    'url' => Url::toRoute(['/achievement/list?sort=-id']),
-                'sort' => ['id' => SORT_DESC],
-                'css' => ['warper' => 'box-widget index-box blue-border', 'title' => 'index-box-title', 'header' => 'with-border index-box-header', 'icon' => 'index-box-icon bicon-bookmark', 'body' => 'box-profile',]
-                ]
-            );*/
+            <?php
+
+            $data = \common\modules\paper\models\Achievement::find()
+                ->where([])->asArray()
+                ->orderBy(['id' => SORT_DESC])->limit(6)
+                ->all();
             ?>
+            <div class="box box-widget index-box blue-border">
+                <a href="/?r=paper/default/list&sort=-id&AchievementSearch%5Bcate%5D=97" class="uppercase">
+                <a href="<?=Url::to(['paper/default/list','sort'=>'-id','AchievementSearch'=>['cate'=>97]]) ?>" class="uppercase">
+                    <div class="box-header with-border index-box-header">
+                        <i class="index-box-icon bicon-bookmark"></i>
+
+                        <h3 class="box-title index-box-title text-blue">科研成果 </h3>
+                        <div class="list-white-bg"></div>
+                        <div class="box-tools pull-right"></div>
+                    </div>
+                </a>
+                <div class="box-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                            <div class="box-body table-responsive no-padding">
+                                <table class="table table-hover table-tab">
+                                    <tbody><tr>
+                                        <th class="tab-th"> </th>
+                                        <th class="tab-th">题目</th>
+                                        <th class="tab-th">作者</th>
+                                        <th class="tab-th">期刊</th>
+                                    </tr>
+                                    <?php foreach ($data as $v) { ?>
+                                        <tr>
+                                            <td width=70><?= $v['year_id'] ?></td>
+                                            <td><?= $v['title'] ?></td>
+                                            <td><?= $v['author'] ?></td>
+                                            <td><?= @$v['periodical'] ?>
+                                                <br><?= @$v['serial_number'] ?>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="box-footer clearfix">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <div class="col-md-4 wbox" style="height: 506px;">
             <?= common\widgets\box\BoxWidget::widget([
-                'category' => Category::findOne(['slug' => 'news']),
+                'category' => Category::findOne(['slug' => '系列讲座']),
                 'type' => 'listPic_m',
                 //'cate' => 14,
                 'sort' => [
@@ -130,7 +153,7 @@ position: relative;
                 'liNum' => 4,
                 //'pic' => true,
                 //'title' => ,
-                'url' => Url::toRoute(['document/list', 'cate' => 14]),
+                'url' => Url::toRoute(['article/index', 'cate' => 'news']),
                 'css' => ['warper' => 'box-widget index-box ', 'header' => 'with-border index-box-header', 'title' => 'index-box-title', 'icon' => 'index-box-icon bicon-news', 'body' => 'box-profile blue-border',],
             ]) ?>
 

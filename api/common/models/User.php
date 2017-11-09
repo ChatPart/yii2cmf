@@ -20,11 +20,12 @@ class User extends \common\modules\user\models\User
             'id',
             'username',
             'email',
-            'access_token',
+            //'access_token',
             'expired_at',
             'avatar' => function ($model) {
                 return Url::to($model->getAvatar(), true);
-            }
+            },
+
         ];
     }
 

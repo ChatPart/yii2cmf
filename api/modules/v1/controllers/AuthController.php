@@ -11,7 +11,7 @@ namespace api\modules\v1\controllers;
 
 use api\common\controllers\Controller;
 use api\modules\v1\models\LoginForm;
-use api\common\models\User;
+//use api\common\models\User;
 
 
 class AuthController extends Controller
@@ -32,9 +32,7 @@ class AuthController extends Controller
         $model->load(request()->post(), '');
 
         if ($model->login()) {
-            /**
-             * @var User $user
-             */
+
             $user = \Yii::$app->user->identity;
             if (empty($user->access_token) || $user->expired_at < time()) {
                 $user->generateAccessToken();

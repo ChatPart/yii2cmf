@@ -57,7 +57,6 @@ class DefaultController extends Controller
 
         $searchModel = new AchievementSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
         //var_dump($dataProvider->sort);die();
         return $this->render('list', [
             'searchModel' => $searchModel,

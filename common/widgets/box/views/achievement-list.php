@@ -46,7 +46,7 @@ $data = $ac;
                                     <tr>
                                         <td width="70"><?= $v['year_id'] ?></td>
 
-                                        <td><?= $v['title'] ?></td>
+                                        <td><?= $v['subject'] ?></td>
                                         <td><?= $v['author'] ?></td>
                                         <td><?= $v['periodical'] ?>
                                             <br><?= $v['serial_number'] ?>
